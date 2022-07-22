@@ -3,11 +3,8 @@
     $i                  = 1;
     if(!empty($category))
     {
-        foreach($category as $row){
-            if($i > 5){
-                $i          = 5;
-            }
-    
+        foreach($category as $row)
+        {
             $id             = an_encrypt($row->id);
             $category_name  = an_strong(ucwords($row->name));
     
@@ -68,6 +65,10 @@
                     if(empty($arrCategory[$id_category])) continue;
 
                     if($status == 0) continue;
+
+                    if($type_number > 5){
+                        $type_number = 5;
+                    }
 
                     $label          = $arrColor[$type_number];
                     echo $strProduct     = "
