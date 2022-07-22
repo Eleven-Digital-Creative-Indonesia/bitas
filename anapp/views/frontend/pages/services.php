@@ -30,7 +30,10 @@
                     <div class="col-sm-3">
                         <div class="item wow fadeInUp" data-wow-duration="1s" data-wow-delay="<?php echo $second; ?>s">
                             <div class="item__images">
-                            <img src="<?php echo SERVICES_IMG_PATH.$row->image; ?>" alt="">
+                            <?php
+                                $img_src        = an_services_image($row->image, true);
+                            ?>
+                            <img src="<?php echo $img_src; ?>" alt="">
                             </div>
                             <div class="item__title">
                                 <?php echo $row->category; ?>
