@@ -96,7 +96,7 @@
                         <input type="text" name="homedetail_title" id="homedetail_title" class="form-control">
                     </div>
                     <div class="form-group mb-2">
-                        <label class="control-label">Title <span class="required">*</span></label>
+                        <label class="control-label">Nama Pendek<span class="required">*</span></label>
                         <input type="text" name="homedetail_short_name" id="homedetail_short_name" class="form-control">
                     </div>
                     <div class="form-group mb-2">

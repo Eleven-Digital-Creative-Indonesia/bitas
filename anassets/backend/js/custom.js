@@ -7644,6 +7644,7 @@ var HomeManage = function() {
                                 $('#homedetail_id', _form).val(response.notification.id);
                                 $('#homedetail_type', _form).val(response.notification.type);
                                 $('#homedetail_title', _form).val(response.notification.title);
+                                $('#homedetail_short_name', _form).val(response.notification.short_name);
                                 $('#homedetail_status', _form).val(response.notification.status);
                                 $('#homedetail_content_plain', _form).val(response.notification.content);
                                 CKEDITOR.instances['homedetail_content_email'].setData( response.notification.content );

@@ -27,6 +27,7 @@ class Home extends Admin_Controller
 
         $current_member         = an_get_current_member();
         $is_admin               = as_administrator($current_member);
+        $is_member              = as_member($current_member);
 
         $headstyles             = an_headstyles(array(
             // Default CSS Plugin
@@ -56,6 +57,7 @@ class Home extends Admin_Controller
         $data['title']          = TITLE . lang('menu_home') . ' ' . lang('menu_home_new');
         $data['member']         = $current_member;
         $data['is_admin']       = $is_admin;
+        $data['is_member']      = $is_member;
         $data['headstyles']     = $headstyles;
         $data['scripts']        = $loadscripts;
         $data['scripts_init']   = $scripts_init;
@@ -73,6 +75,7 @@ class Home extends Admin_Controller
 
         $current_member         = an_get_current_member();
         $is_admin               = as_administrator($current_member);
+        $is_member              = as_member($current_member);
 
         $headstyles             = an_headstyles(array(
             // Default CSS Plugin
@@ -100,6 +103,7 @@ class Home extends Admin_Controller
         $data['title_page']     = '<i class="ni ni-align-left-2 mr-1"></i> ' . lang('menu_home_client');
         $data['member']         = $current_member;
         $data['is_admin']       = $is_admin;
+        $data['is_member']      = $is_member;
         $data['headstyles']     = $headstyles;
         $data['scripts']        = $loadscripts;
         $data['scripts_init']   = $scripts_init;
@@ -328,6 +332,7 @@ class Home extends Admin_Controller
 
         $current_member         = an_get_current_member();
         $is_admin               = as_administrator($current_member);
+        $is_member              = as_member($current_member);
 
         $params                 = array();
         $condition              = '';
@@ -432,7 +437,7 @@ class Home extends Admin_Controller
                     $client,
                     an_center( $status ),
                     an_center( date('Y-m-d @H:i', strtotime($row->dateupdated)) ),
-                    an_center( ( ($is_admin && $access) ? $btn_edit.$btn_delete : '' ) )
+                    an_center( ( (($is_admin || $is_member) && $access) ? $btn_edit.$btn_delete : '' ) )
                 );
                 $i++;
             }

@@ -11,7 +11,7 @@
                         </ol>
                     </nav>
                 </div>
-                <?php if ( $is_admin) { ?>
+                <?php if ( $is_admin || $is_member ) { ?>
                     <div class="col-lg-6 col-5 text-right">
                         <a href="javascript:;" class="btn btn-sm btn-outline-default" id="btn-modal-category" data-url="<?php echo base_url('productmanage/savecategory'); ?>">
                             <i class="fa fa-plus mr-1"></i> <?php echo lang('menu_product_category'); ?>

@@ -1568,6 +1568,7 @@ class Backend extends Member_Controller
 
         $current_member         = an_get_current_member();
         $is_admin               = as_administrator($current_member);
+        $is_member              = as_member($current_member);
 
         $headstyles             = an_headstyles(array(
             // Default CSS Plugin
@@ -1595,6 +1596,7 @@ class Backend extends Member_Controller
         $data['title_page']     = '<i class="ni ni-align-left-2 mr-1"></i> ' . lang('menu_product_list');
         $data['member']         = $current_member;
         $data['is_admin']       = $is_admin;
+        $data['is_member']      = $is_member;
         $data['headstyles']     = $headstyles;
         $data['scripts']        = $loadscripts;
         $data['scripts_init']   = $scripts_init;
@@ -1613,6 +1615,7 @@ class Backend extends Member_Controller
 
         $current_member         = an_get_current_member();
         $is_admin               = as_administrator($current_member);
+        $is_member              = as_member($current_member);
 
         $headstyles             = an_headstyles(array(
             // Default CSS Plugin
@@ -1641,6 +1644,7 @@ class Backend extends Member_Controller
         $data['title_page']     = '<i class="ni ni-align-left-2 mr-1"></i> ' . lang('menu_product_category');
         $data['member']         = $current_member;
         $data['is_admin']       = $is_admin;
+        $data['is_member']      = $is_member;
         $data['headstyles']     = $headstyles;
         $data['scripts']        = $loadscripts;
         $data['scripts_init']   = $scripts_init;

@@ -35,6 +35,7 @@ class Productmanage extends Admin_Controller {
 
         $current_member         = an_get_current_member();
         $is_admin               = as_administrator($current_member);
+        $is_member              = as_member($current_member);
 
         $params                 = array();
         $condition              = '';
@@ -177,7 +178,7 @@ class Productmanage extends Admin_Controller {
                 $records["aaData"][] = array(
                     an_center($i),
                     $product,
-                    an_center($category),
+                    $category,
                     //'<div style="min-width:90px">'. an_accounting($row->bv, '', true) .'</div>',
                     '<div style="min-width:90px">'. an_accounting($row->price_member, '', true) .'</div>',
                     '<div style="min-width:90px">'. an_accounting($row->price_customer, '', true) .'</div>',
@@ -185,7 +186,7 @@ class Productmanage extends Admin_Controller {
                     an_center( $status ),
                     //an_center( $type ),
                     an_center( date('Y-m-d @H:i', strtotime($row->dateupdated)) ),
-                    an_center( ( ($is_admin && $access) ? $btn_edit.$btn_delete : '' ) )
+                    an_center( ( (($is_admin || $is_member) && $access) ? $btn_edit.$btn_delete : '' ) )
                 );
                 $i++;
             }
@@ -217,6 +218,7 @@ class Productmanage extends Admin_Controller {
 
         $current_member     = an_get_current_member();
         $is_admin           = as_administrator($current_member);
+        $is_member          = as_member($current_member);
 
         $condition          = '';
         $order_by           = '';
@@ -301,7 +303,7 @@ class Productmanage extends Admin_Controller {
                     an_center($i),
                     $category,
                     an_center($status),
-                    an_center( ( ($is_admin && $access) ? $btn_edit.$btn_delete : '' ) )
+                    an_center( ( (($is_admin || $is_member) && $access) ? $btn_edit.$btn_delete : '' ) )
                 );
                 $i++;
             }

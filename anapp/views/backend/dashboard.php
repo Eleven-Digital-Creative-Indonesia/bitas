@@ -546,7 +546,7 @@ if ($is_admin) {
                                         echo '
                                             <tr>
                                                 <td class="text-center">' . date('j M y @H:i', strtotime($row->datecreated)) . '</td>
-                                                <td class="text-center">' . $row->name . '</td>
+                                                <td class="text-left">' . $row->name . '</td>
                                                 <td class="text-center">' . $btn_product . '</td>
                                             </tr>';
                                     }

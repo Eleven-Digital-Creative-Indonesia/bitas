@@ -11,7 +11,7 @@
                         </ol>
                     </nav>
                 </div>
-                <?php if ( $is_admin) { ?>
+                <?php if ( $is_admin || $is_member ) { ?>
                     <div class="col-lg-6 col-5 text-right">
                         <a href="<?php echo base_url('about/historynew') ?>" class="btn btn-sm btn-outline-default"><i class="fa fa-plus mr-1"></i> <?php echo lang('menu_about_detail_new'); ?></a>
                     </div>
