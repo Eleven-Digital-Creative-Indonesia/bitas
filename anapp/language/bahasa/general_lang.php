@@ -89,6 +89,7 @@ $lang['select_image'] 				= 'Pilih Gambar';
 $lang['username']					= 'Username';
 $lang['username_used']				= 'Username Terdaftar';
 $lang['name']						= 'Nama';
+$lang['short_name']				    = 'Nama Pendek';
 $lang['fullname']					= 'Name Lengkap';
 $lang['package']					= 'Paket';
 $lang['position']					= 'Posisi';

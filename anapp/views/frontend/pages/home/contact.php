@@ -11,7 +11,7 @@
                 <?php echo $homedata['contactpage']->content; ?>
             </p>
             <div class="shadowTitle">
-                <?php echo $homedata['contactpage']->name; ?>
+                <?php echo $homedata['contactpage']->short_name; ?>
             </div> 
         <?php endif; ?>         
         </div>

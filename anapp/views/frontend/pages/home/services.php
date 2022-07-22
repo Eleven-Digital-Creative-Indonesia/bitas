@@ -11,7 +11,7 @@
                 <?php echo $homedata['servicepage']->content; ?>
             </p>
             <div class="shadowTitle shadowTitle__5 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1.8s">
-                <?php echo $homedata['servicepage']->name; ?>
+                <?php echo $homedata['servicepage']->short_name; ?>
             </div>
         <?php endif; ?>
         </div>

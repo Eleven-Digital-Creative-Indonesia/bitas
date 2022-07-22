@@ -2258,6 +2258,9 @@ var FV_HomeSetting = function () {
                 homedetail_title: {
                     required: true
                 },
+                homedetail_short_name: {
+                    required: true
+                },
                 homedetail_status: {
                     required: true
                 },
@@ -2305,6 +2308,7 @@ var FV_HomeSetting = function () {
                 var homedetail_id        = $('input[name=homedetail_id]', $(form)).val();
                 var homedetail_type      = $('input[name=homedetail_type]', $(form)).val();
                 var homedetail_title     = $('input[name=homedetail_title]', $(form)).val();
+                var homedetail_short_name     = $('input[name=homedetail_short_name]', $(form)).val();
                 var homedetail_status    = $('select[name=homedetail_status]', $(form)).val();
                 var content_plain   = $('textarea[name=homedetail_content_plain]', $(form)).val();
                 var content_email   = CKEDITOR.instances['homedetail_content_email'].getData();
@@ -2313,6 +2317,7 @@ var FV_HomeSetting = function () {
                     'homedetail_id'      : homedetail_id,
                     'homedetail_type'    : homedetail_type,
                     'homedetail_title'   : homedetail_title,
+                    'homedetail_short_name'   : homedetail_short_name,
                     'homedetail_status'  : homedetail_status,
                     'content_plain' : content_plain,
                     'content_email' : content_email

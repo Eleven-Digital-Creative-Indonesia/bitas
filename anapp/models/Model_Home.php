@@ -199,6 +199,7 @@ class Model_Home extends AN_Model{
         if( !empty($conditions) ){
             $conditions = str_replace("%id%",               "id", $conditions);
             $conditions = str_replace("%name%",             "name", $conditions);
+            $conditions = str_replace("%short_name%",       "short_name", $conditions);
             $conditions = str_replace("%slug%",             "slug", $conditions);
             $conditions = str_replace("%type%",             "type", $conditions);
             $conditions = str_replace("%status%",           "status", $conditions);
@@ -207,6 +208,7 @@ class Model_Home extends AN_Model{
         if( !empty($order_by) ){
             $order_by   = str_replace("%id%",               "id",  $order_by);
             $order_by   = str_replace("%name%",             "name", $order_by);
+            $order_by   = str_replace("%short_name%",       "short_name", $order_by);
             $order_by   = str_replace("%slug%",             "slug", $order_by);
             $order_by   = str_replace("%type%",             "type", $order_by);
             $order_by   = str_replace("%status%",           "status", $order_by);

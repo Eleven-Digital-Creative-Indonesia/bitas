@@ -233,6 +233,8 @@ class Home extends Admin_Controller
 
         $s_name             = $this->input->post('search_name');
         $s_name             = an_isset($s_name, '');
+        $s_short_name       = $this->input->post('search_short_name');
+        $s_short_name       = an_isset($s_short_name, '');
         //$s_type             = $this->input->post('search_type');
         //$s_type             = an_isset($s_type, '');
         $s_status           = $this->input->post('search_status');
@@ -240,6 +242,10 @@ class Home extends Admin_Controller
 
         if (!empty($s_name)) {
             $condition .= str_replace('%s%', $s_name, ' AND %name% LIKE "%%s%%"');
+        }
+
+        if (!empty($s_short_name)) {
+            $condition .= str_replace('%s%', $s_short_name, ' AND %name% LIKE "%%s%%"');
         }
         //if (!empty($s_type)) {
             //$condition .= str_replace('%s%', $s_type, ' AND %type% = "%s%"');
@@ -252,8 +258,10 @@ class Home extends Admin_Controller
         if ($column == 1) {
             $order_by .= '%name% ' . $sort;
         } elseif ($column == 2) {
-            $order_by .= '%type% ' . $sort;
+            $order_by .= '%short_name% ' . $sort;
         } elseif ($column == 3) {
+            $order_by .= '%type% ' . $sort;
+        } elseif ($column == 4) {
             $order_by .= '%status% ' . $sort;
         }
 
@@ -285,6 +293,7 @@ class Home extends Admin_Controller
                 $records["aaData"][]    = array(
                     an_center($i),
                     $row->name,
+                    $row->short_name,
                     //an_center($type),
                     an_center($status),
                     an_center($btn_edit . $btn_view),
@@ -508,6 +517,8 @@ class Home extends Admin_Controller
         $homedetail_type     = an_isset($homedetail_type, '');
         $homedetail_title    = $this->input->post('homedetail_title');
         $homedetail_title    = an_isset($homedetail_title, '');
+        $homedetail_short_name    = $this->input->post('homedetail_short_name');
+        $homedetail_short_name    = an_isset($homedetail_short_name, '');
         $homedetail_status   = $this->input->post('homedetail_status');
         $homedetail_status   = an_isset($homedetail_status, '');
         $content_email  = $this->input->post('content_email');
@@ -524,7 +535,7 @@ class Home extends Admin_Controller
         $content        = (strtolower($homedetail_type) == 'email') ? $content_email : $content_plain;
 
         // Set and Update Data About Us Detail
-        $data_homedetail     = array('title' => $homedetail_title, 'content' => $content, 'status' => $homedetail_status);
+        $data_homedetail     = array('title' => $homedetail_title, 'short_name' => $homedetail_short_name, 'content' => $content, 'status' => $homedetail_status);
         if (!$update_homedetail = $this->Model_Home->update_data_detail($homedetail->id, $data_homedetail)) {
             $data = array('status' => 'error', 'message' => 'Update Detail tidak berhasil. Terjasi kesalahan pada proses transaksi.');
             die(json_encode($data));

@@ -34,6 +34,7 @@
                                 <tr role="row" class="heading">
                                     <th class="width5 text-center">No</th>
                                     <th class="width55 text-center"><?php echo lang('name') ?></th>
+                                    <th class="width55 text-center"><?php echo lang('short_name') ?></th>
                                     <!-- <th class="width15 text-center"><?php echo lang('type') ?></th> -->
                                     <th class="width15 text-center"><?php echo lang('status') ?></th>
                                     <th class="width10 text-center"><?php echo lang('actions') ?></th>
@@ -41,6 +42,7 @@
                                 <tr role="row" class="filter">
                                     <td></td>
                                     <td><input type="text" class="form-control form-control-sm form-filter" name="search_name" /></td>
+                                    <td><input type="text" class="form-control form-control-sm form-filter" name="search_short_name" /></td>
                                     <!--
                                     <td>
                                         <select name="search_type" class="form-control form-control-sm form-filter">
@@ -92,6 +94,10 @@
                     <div class="form-group mb-2">
                         <label class="control-label">Title <span class="required">*</span></label>
                         <input type="text" name="homedetail_title" id="homedetail_title" class="form-control">
+                    </div>
+                    <div class="form-group mb-2">
+                        <label class="control-label">Title <span class="required">*</span></label>
+                        <input type="text" name="homedetail_short_name" id="homedetail_short_name" class="form-control">
                     </div>
                     <div class="form-group mb-2">
                         <label class="control-label">Status <span class="required">*</span></label>
