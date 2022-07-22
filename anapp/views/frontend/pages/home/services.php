@@ -24,23 +24,29 @@
                     <?php 
                         foreach($value AS $row) : 
                     ?>
-                    <div class="col-sm-3">
-                        <div class="item wow fadeInUp" data-wow-duration="1s" data-wow-delay="<?php echo $second; ?>s">
-                            <div class="item__images">
-                            <img src="<?php echo SERVICES_IMG_PATH.$row->image; ?>" alt="">
+                        <div class="col-sm-3">
+                            <div class="item wow fadeInUp" data-wow-duration="1s" data-wow-delay="<?php echo $second; ?>s">
+                                <div class="item__images">
+                                <?php
+                                    $img_src        = an_services_image($row->image, true);
+                                ?>
+                                <img src="<?php echo $img_src; ?>" alt="">
+                                </div>
+                                <div class="item__title">
+                                    <?php echo $row->category; ?>
+                                </div>  
                             </div>
-                            <div class="item__title">
-                                <?php echo $row->category; ?>
-                            </div>  
                         </div>
-                    </div>
-                    <?php 
+                        <?php 
                             $second += 0.3;
                         endforeach; 
                     ?>
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>
+        <div class="button__area text-center wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
+            <a href="<?php base_url(); ?>services" class="btn btn__primary">Lihat semua layanan</a>
+        </div>
     </div>
 </section> 
 
