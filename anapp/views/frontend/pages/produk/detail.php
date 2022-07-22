@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-lg-8">
         <div class="product-image">
-            <img src=<?php echo $img_src; ?> alt=<?php echo $products->slug; ?>>
+            <img src=<?php echo $img_src; ?> alt=<?php echo $data_product->slug; ?>>
         </div>
         </div>
         <div class="col-lg-4">
@@ -18,7 +18,7 @@
             <div class="title"><?php echo $product_name; ?></div>
             <div class="description">
             <p>
-                <?php echo $products->short_description; ?>
+                <?php echo $data_product->short_description; ?>
             </p>
             </div>
             <div class="icon">
@@ -28,6 +28,6 @@
         </div>
     </div>
     <div class="product-content">
-        <p><?php echo $products->description; ?></p>
+        <p><?php echo $data_product->description; ?></p>
     </div>
 </section>

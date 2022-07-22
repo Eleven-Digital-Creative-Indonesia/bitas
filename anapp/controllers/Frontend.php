@@ -112,6 +112,7 @@ class Frontend extends AN_Controller
         $product_id             = '';
         $product_name           = '';
         $img_src                = '';
+        $data_product           = '';
         if ( $id ) {
             $id = an_decrypt($id);
             $data_product       = an_products($id);
@@ -123,14 +124,21 @@ class Frontend extends AN_Controller
             }
         }
 
-        $data_list              = $this->Model_Product->get_all_product();
-        $data['products']       = $data_product;
+        $data['data_product']   = $data_product;
         $data['product_id']     = $product_id;
         $data['product_name']   = $product_name;
         $data['img_src']        = $img_src;
 
         $services_list          = $this->Model_Services->get_all_services();
         $data['serviceslist']   = $services_list;
+        
+        $condition = ' AND %status% = 1'; 
+        $data_list              = $this->Model_Product->get_all_product(0, 0, $condition, '', '');
+        $data['products']       = $data_list;
+
+        //$limit=0, $offset=0, $conditions='', $order_by='', $params=''
+        $data_history           = $this->Model_Aboutus->get_all_aboutus_history(0, 0, '', 'year_from DESC', '');
+        $data['data_history']   = $data_history;
         $this->load->view(VIEW_FRONT . 'template', $data);
     }
 
