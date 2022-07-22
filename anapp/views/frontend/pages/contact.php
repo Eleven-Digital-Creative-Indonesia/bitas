@@ -54,7 +54,7 @@
 
     <!-- Google Maps-->
     <div class="maps round">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7933.262359273026!2d106.87529500000001!3d-6.180096!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xcce2991da9450a1a!2sEracita%20Astamida!5e0!3m2!1sen!2sus!4v1597770729046!5m2!1sen!2sus" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.6514163314037!2d106.8382342!3d-6.4387938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ea3ee3176a6f%3A0x8efb94ab92047d13!2sJl.%20Raya%20Abdul%20Gani%20Blok%20Cilodong%20No.3%2C%20RT.5%2FRW.3%2C%20Kalibaru%2C%20Kec.%20Cilodong%2C%20Kota%20Depok%2C%20Jawa%20Barat%2016413!5e0!3m2!1sid!2sid!4v1658507392923!5m2!1sid!2sid" width="100%" height="450" frameborder="0" style="border:0;"style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
     </div>
 </section>
