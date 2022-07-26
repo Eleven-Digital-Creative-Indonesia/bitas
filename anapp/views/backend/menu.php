@@ -777,7 +777,7 @@ if($typePackage == ELPRO_PACKAGE_BRONZE)
     foreach($sidebar as $idx => $nav):
         if($nav['nav'] == 'member' || $nav['nav'] == 'commission' || $nav['nav'] == 'faspay' 
            || $nav['nav'] == 'report' || $nav['nav'] == 'productdatalists' || $nav['nav'] == 'staff' 
-           || $nav['nav'] == 'faq'
+           || $nav['nav'] == 'faq' || $nav['nav'] == 'contact'
         ){
             unset($sidebar[$idx]);
             continue;
@@ -803,6 +803,10 @@ if($typePackage == ELPRO_PACKAGE_BRONZE)
                 }
 
                 if($sub['nav'] == 'withdraw'){
+                    unset($nav['sub'][$index]);
+                }
+
+                if($sub['nav'] == 'contact'){
                     unset($nav['sub'][$index]);
                 }
             endforeach;
