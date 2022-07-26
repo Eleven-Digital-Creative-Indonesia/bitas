@@ -1,1 +1,1 @@
-# BITAS | Bintang Talenta Scientific, PT. | Website | Product | Software
+# BITAS | Bintang Talenta Scientific, PT. | Website | Product | Software | Digital
