@@ -91,7 +91,7 @@ defined('EXIT__AUTO_MAX')      or define('EXIT__AUTO_MAX', 125); // highest auto
 */
 define('TITLE',                 "BITAS - Bintang Talenta Scientific | ");
 define('DOMAIN_NAME',           "bitas-idc.com");
-define('COMPANY_NAME',          "BITAS-IDC");
+define('COMPANY_NAME',          "BITAS - Bintang Talenta Scientific");
 define('COMPANY_PHONE',         "081221814129");
 define('COMPANY_ADDRESS',       "Jl. H.Abdul Gani Raya No. 5 Kel. Jatimulya, Kec. Cilodong, Depok");
 define('COMPANY_EMAIL',         "admin@" . DOMAIN_NAME);
