@@ -14,7 +14,7 @@
                             <?php echo $homedata['homepage']->content; ?>
                         </p>
                         <div class="shadowTitle shadowTitle__1 wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.4s">
-                            <?php echo $homedata['homepage']->title; ?>
+                            <?php echo $homedata['homepage']->short_name; ?>
                         </div>
                     <?php endif; ?>
                     </div>
