@@ -89,7 +89,7 @@ defined('EXIT__AUTO_MAX')      or define('EXIT__AUTO_MAX', 125); // highest auto
 | Website Title
 |--------------------------------------------------------------------------
 */
-define('TITLE',                 "BITAS-IDC | ");
+define('TITLE',                 "BITAS - Bintang Talenta Scientific | ");
 define('DOMAIN_NAME',           "bitas-idc.com");
 define('COMPANY_NAME',          "BITAS-IDC");
 define('COMPANY_PHONE',         "081221814129");
