@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-    <title><?= COMPANY_NAME ?> | <?php echo $title; ?></title>
+    <title><?= TITLE ?> | <?php echo $title; ?></title>
     <meta name="robots" content="" />
     <meta name="copyright" content="" />
     <meta name="author" content="" />
@@ -15,22 +15,21 @@
     
     <meta name="description" content="Leading Sector Industri Alat Kesehatan dan Medis di Indonesia">
     <meta name="keywords" content="alat kesehatan, alat medis, kosmetik, skin care, industri kesehatan, farmasi">
-    <meta property="og:description" , content="" />
-    <meta property="og:site_name" , content="Official Site of <?= COMPANY_NAME ?>" />
     <meta content="<?= LOGO_IMG ?>" name="og:image">
-    <meta property="og:title" , content="<?= COMPANY_NAME ?>" />
 
     <!-- Open Graph / Facebook -->
+    <meta property="og:description" , content="" />
+    <meta property="og:site_name" , content="Official Site of <?= TITLE ?>" />
     <meta property="og:type" content="website">
     <meta property="og:url" content="<?= base_url() ?>">
-    <meta property="og:title" content="<?= COMPANY_NAME ?>">
+    <meta property="og:title" content="<?= TITLE ?>">
     <meta property="og:description" content="">
     <meta property="og:image" content="<?= LOGO_IMG ?>">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="<?= base_url() ?>">
-    <meta property="twitter:title" content="<?= COMPANY_NAME ?>">
+    <meta property="twitter:title" content="<?= TITLE ?>">
     <meta property="twitter:description" content="">
     <meta property="twitter:image" content="<?= LOGO_IMG ?>">
 
