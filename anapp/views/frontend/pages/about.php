@@ -1,5 +1,13 @@
 <!-- Banner Page -->
+<?php 
+    $home_list  = $this->Model_Home->get_home_detail();
+    $img_src    = an_page_home_image($home_list['aboutuspage']->image, true);
+?>
+<?php if(!empty($home_list['aboutuspage']->image)) : ?>
+<div class="banner banner__about" style="background: url(<?php echo $img_src; ?>) center;"></div>
+<?php else : ?>
 <div class="banner banner__about"></div>
+<?php endif; ?>
 
 <!-- About -->
 <section class="page about valign" id="about">      

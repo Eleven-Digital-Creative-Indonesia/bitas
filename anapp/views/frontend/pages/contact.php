@@ -1,5 +1,13 @@
 <!-- Banner Page -->
+<?php 
+    $home_list  = $this->Model_Home->get_home_detail();
+    $img_src    = an_page_home_image($home_list['contactpage']->image, true);
+?>
+<?php if(!empty($home_list['contactpage']->image)) : ?>
+<div class="banner banner__contact" style="background: url(<?php echo $img_src; ?>) center;"></div>
+<?php else : ?>
 <div class="banner banner__contact"></div>
+<?php endif; ?>
     
 <!-- Contact -->
 <section class="page page__half contact" id="contact">

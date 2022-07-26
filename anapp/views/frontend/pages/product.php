@@ -31,7 +31,15 @@
 ?>
 
 <!-- Banner Page -->
+<?php 
+    $home_list  = $this->Model_Home->get_home_detail();
+    $img_src    = an_page_home_image($home_list['productpage']->image, true);
+?>
+<?php if(!empty($home_list['productpage']->image)) : ?>
+<div class="banner banner__product" style="background: url(<?php echo $img_src; ?>) center;"></div>
+<?php else : ?>
 <div class="banner banner__product"></div>
+<?php endif; ?>
 
 <!-- Product-->
 <section class="product">

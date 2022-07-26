@@ -1,5 +1,13 @@
 <!-- Banner Page -->
+<?php 
+    $home_list  = $this->Model_Home->get_home_detail();
+    $img_src        = an_page_home_image($home_list['servicepage']->image, true);
+?>
+<?php if(!empty($home_list['servicepage']->image)) : ?>
+<div class="banner banner__services" style="background: url(<?php echo $img_src; ?>) center;"></div>
+<?php else : ?>
 <div class="banner banner__services"></div>
+<?php endif; ?>
 
 <!-- Service -->
 <section class="page service" id="services">
