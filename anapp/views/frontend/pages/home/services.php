@@ -33,7 +33,7 @@
                                 <img src="<?php echo $img_src; ?>" alt="">
                                 </div>
                                 <div class="item__title">
-                                    <?php echo $row->category; ?>
+                                    <?php echo $row->name; ?>
                                 </div>  
                             </div>
                         </div>
