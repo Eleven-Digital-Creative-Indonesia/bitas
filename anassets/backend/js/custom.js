@@ -7756,6 +7756,72 @@ var HomeManage = function() {
                 }
             });
         }); 
+
+        // Button Edit Status Detail Data
+        // -----------------------------------------------
+        $("body").delegate( "a.btn-status-detailhome", "click", function( e ) {
+            e.preventDefault();
+            var url         = $(this).attr('href');
+            var detail      = $(this).data('detail');
+            var status      = $(this).data('status');
+            var msg_title   = (status == '1') ? 'Apakah anda yakin akan Meng-Nonaktifkan Data Ini ?' : 'Apakah anda yakin akan Meng-Aktifkan Data Ini ?';
+
+            var msg_body    = `
+                <div class="row pt-5 align-items-center">
+                    <div class="col-sm-12">
+                        <h3 class="heading mb-3 text-center">`+ msg_title +`</h3>
+                    </div>
+                    <div class="col-sm-12 text-center">
+                        <small class="text-uppercase text-muted font-weight-bold">Data : </small>
+                        <h2 class="heading-title text-primary mb-0">`+ detail +`</h2>
+                    </div>
+                </div>`;
+            bootbox.confirm(msg_body, function(result) {
+                if( result == true ){
+                    $.ajax({
+                        type:   "POST",
+                        url:    url,
+                        beforeSend: function (){
+                            App.run_Loader('roundBounce');
+                        },
+                        success: function( response ){
+                            App.close_Loader();
+                            response = $.parseJSON(response);
+                            
+                            if( response.status == 'access_denied' ){
+                                $(location).attr('href',response.url);
+                            }else{
+                                if( response.status == 'success'){
+                                    App.notify({
+                                        icon: 'fa fa-check-circle', 
+                                        title: 'Success', 
+                                        message: response.message, 
+                                        type: 'success',
+                                    });
+                                    $('#btn_homedetail_list').trigger('click');
+                                }else{
+                                    App.notify({
+                                        icon: 'fa fa-exclamation-triangle', 
+                                        title: 'Failed', 
+                                        message: response.message, 
+                                        type: 'danger',
+                                    });
+                                }
+                            }
+                        },
+                        error: function( jqXHR, textStatus, errorThrown ) {
+                            App.close_Loader();
+                            App.notify({
+                                icon: 'fa fa-exclamation-triangle', 
+                                title: 'Failed', 
+                                message: 'Terjadi kesalahan sistem! Ulangi proses beberapa saat lagi.', 
+                                type: 'danger',
+                            });
+                        }
+                    });
+                }
+            });
+        });
     };
 
     // ---------------------------------

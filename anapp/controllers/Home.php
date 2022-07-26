@@ -317,9 +317,9 @@ class Home extends Admin_Controller
                 */
 
                 if ( $row->status == 1 ) {
-                    $status     = '<a href="'.base_url('home/detailstatus/'.$id).'" class="btn btn-sm btn-outline-success btn-status-detail" data-detail="'.$row->name.'" data-status="'.$row->status.'"><i class="fa fa-check"></i> Active</a>';
+                    $status     = '<a href="'.base_url('home/detailstatus/'.$id).'" class="btn btn-sm btn-outline-success btn-status-detailhome" data-detail="'.$row->name.'" data-status="'.$row->status.'"><i class="fa fa-check"></i> Active</a>';
                 } else {
-                    $status     = '<a href="'.base_url('home/detailstatus/'.$id).'" class="btn btn-sm btn-outline-danger btn-status-detail" data-detail="'.$row->name.'" data-status="'.$row->status.'"><i class="fa fa-times"></i> Non-Active</a>';
+                    $status     = '<a href="'.base_url('home/detailstatus/'.$id).'" class="btn btn-sm btn-outline-danger btn-status-detailhome" data-detail="'.$row->name.'" data-status="'.$row->status.'"><i class="fa fa-times"></i> Non-Active</a>';
                 }
 
                 $btn_edit   = '<a class="btn btn-sm btn-tooltip btn-default detaildata" title="Edit" href="' . base_url('home/detaildata/' . $row->id . '/edit') . '"><i class="fa fa-edit"></i></a>';
@@ -783,6 +783,55 @@ class Home extends Admin_Controller
 
         // Save Success
         $data = array('status'=>'success', 'message'=>'Status Pelanggan berhasil diedit.');
+        die(json_encode($data));
+    }
+
+    /**
+     * Status Detail Function
+     */
+    function detailstatus( $id = 0 ){
+        if ( ! $this->input->is_ajax_request() ) { redirect(base_url('home/new'), 'refresh'); }
+        $auth = auth_redirect( $this->input->is_ajax_request() );
+        if( !$auth ){
+            $data = array('status' => 'access_denied', 'url' => base_url('login'));
+            die(json_encode($data)); // JSON encode data
+        }
+
+        if( !$id ){
+            $data = array('status' => 'error', 'message' => 'ID Detail tidak ditemukan !');
+            die(json_encode($data));
+        }
+
+        $id = an_decrypt($id);
+        if ( ! $data_detail = an_home_detail($id) ) {
+            $data = array('status' => 'error', 'message' => 'Data Detail tidak ditemukan !');
+            die(json_encode($data));
+        }
+
+        // set variables
+        $current_member     = an_get_current_member();
+        $is_admin           = as_administrator($current_member);
+        $datetime           = date('Y-m-d H:i:s');
+        $status             = ( $data_detail->status == 1 ) ? 0 : 1;
+
+        $modified_by        = $current_member->username;
+        if ( $staff = an_get_current_staff() ) {
+            $modified_by    = $staff->username;
+        }
+
+        $data = array(
+            'status'        => $status,
+            'modified_by'   => $modified_by,
+            'datemodified'  => $datetime,
+        );
+
+        if ( ! $update_data = $this->Model_Home->update_data_detail($id, $data) ) {
+            $data = array('status' => 'error', 'message' => 'Status Detail tidak berhasil diedit !');
+            die(json_encode($data));
+        }
+
+        // Save Success
+        $data = array('status'=>'success', 'message'=>'Status Detail berhasil diedit.');
         die(json_encode($data));
     }
 

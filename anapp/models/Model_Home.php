@@ -9,6 +9,7 @@ class Model_Home extends AN_Model{
     var $table              = TBL_PREFIX . 'page_home';
     var $home               = TBL_PREFIX . 'page_home';
     var $client             = TBL_PREFIX . 'page_client';
+    var $detail             = TBL_PREFIX . 'page_home';
     var $year               = TBL_PREFIX . 'year';
 
     /**
@@ -64,6 +65,27 @@ class Model_Home extends AN_Model{
         }
 
         return $arrData;
+    }
+
+    /**
+     * Get detail data
+     * 
+     * @author  Rifal
+     * @param   Int     $id     (Optional)  ID of detail
+     * @return  Mixed   False on invalid date parameter, otherwise data of client(s).
+     */
+    function get_home_detaildata($id='', $is_active = false){
+        if ( !empty($id) ) { 
+            $this->db->where($this->primary, $id);
+        }
+
+        if ( $is_active ) {
+            $this->db->where('status', 1);
+        }
+        
+        $this->db->order_by("id", "ASC"); 
+        $query      = $this->db->get($this->detail);        
+        return ( !empty($id) ? $query->row() : $query->result() );
     }
 
     /**

@@ -1713,6 +1713,21 @@ if (!function_exists('an_client')) {
     }
 }
 
+if (!function_exists('an_home_detail')) {
+    /**
+     * Get detail data
+     * @author  Rifal
+     * @param   Int     $id     (Optional)  detail id
+     * @return  Data
+     */
+    function an_home_detail($id = '', $is_active = false)
+    {
+        $CI = &get_instance();
+        $detail = $CI->Model_Home->get_home_detaildata($id, $is_active);
+        return $detail;
+    }
+}
+
 if (!function_exists('an_client_by')) {
     /**
      * Get client by field data
