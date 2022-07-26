@@ -322,6 +322,10 @@ class Home extends Admin_Controller
                     $status     = '<a href="'.base_url('home/detailstatus/'.$id).'" class="btn btn-sm btn-outline-danger btn-status-detailhome" data-detail="'.$row->name.'" data-status="'.$row->status.'"><i class="fa fa-times"></i> Non-Active</a>';
                 }
 
+                if($row->slug == 'homepage'){
+                    $status     = '';
+                }
+
                 $btn_edit   = '<a class="btn btn-sm btn-tooltip btn-default detaildata" title="Edit" href="' . base_url('home/detaildata/' . $row->id . '/edit') . '"><i class="fa fa-edit"></i></a>';
                 $btn_banner = '<a class="btn btn-sm btn-tooltip btn-primary detaildata" title="Banner" href="' . base_url('home/detaildata/' . $row->id . '/banner') . '"><i class="fa fa-image"></i></a>';
                 $btn_banner = '';
