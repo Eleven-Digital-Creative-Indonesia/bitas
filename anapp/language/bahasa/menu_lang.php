@@ -5,6 +5,7 @@ $lang['menu_profile']                   = 'Profil';
 $lang['menu_home']                      = 'Beranda';
 $lang['menu_home_new']                  = 'Tambah Data';
 $lang['menu_home_list']                 = 'Master Data Beranda';
+$lang['menu_home_edit']                 = 'Edit Data Beranda ';
 $lang['menu_home_client']               = 'Master Data Pelanggan';
 $lang['menu_home_client_new']           = 'Tambah Data Pelanggan';
 $lang['menu_home_client_edit']          = 'Ubah Data Pelanggan';

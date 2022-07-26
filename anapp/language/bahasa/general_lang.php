@@ -136,6 +136,10 @@ $lang['pin_total']            		= 'Total Produk';
 $lang['pin_active']            		= 'Produk Aktif';
 $lang['product_save'] 				= 'Simpan Data Produk';
 
+$lang['homedetail_title'] 			= 'Nama Judul';
+$lang['homedetail_short_name'] 		= 'Nama Pendek';
+$lang['homedetail_save'] 			= 'Simpan Data Detail';
+
 $lang['services']            		= 'Layanan';
 $lang['services_name']            	= 'Nama Layanan';
 $lang['services_save'] 				= 'Simpan Data Layanan';

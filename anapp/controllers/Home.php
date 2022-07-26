@@ -208,6 +208,60 @@ class Home extends Admin_Controller
 
         $this->load->view(VIEW_BACK . 'template_index', $data);
     }
+
+    /**
+     * Detail Edit function.
+     */
+    public function detailedit($id = 0){
+        auth_redirect();
+        if (!$id) {
+            redirect(base_url('home/new'), 'refresh');
+        }
+
+        $id_detail = an_decrypt($id);
+        if (!$data_detail = an_home_detail($id_detail)) {
+            redirect(base_url('home/new'), 'refresh');
+        }
+
+        $current_member         = an_get_current_member();
+        $is_admin               = as_administrator($current_member);
+        $is_member              = as_member($current_member);
+
+        $headstyles             = an_headstyles(array(
+            // Default CSS Plugin
+            BE_PLUGIN_PATH . 'quill/dist/quill.core.css?ver=' . CSS_VER_MAIN,
+        ));
+        $loadscripts            = an_scripts(array(
+            // Default JS Plugin
+            BE_PLUGIN_PATH . 'jquery-inputmask/jquery.inputmask.bundle.min.js?ver=' . JS_VER_MAIN,
+            BE_PLUGIN_PATH . 'jquery-validation/dist/jquery.validate.min.js?ver=' . JS_VER_MAIN,
+            BE_PLUGIN_PATH . 'quill/dist/quill.min.js?ver=' . JS_VER_MAIN,
+            // Always placed at bottom
+            BE_JS_PATH . 'form-validation.js?ver=' . JS_VER_BACK,
+            BE_JS_PATH . 'custom.js?ver=' . JS_VER_BACK
+        ));
+        $scripts_init           = an_scripts_init(array(
+            'InputMask.init();',
+            'HomeManage.init();',
+        ));
+        $scripts_add            = '';
+
+        $data['title']          = TITLE . lang('menu_home_edit');
+        $data['title_page']     = '<i class="fa fa-edit mr-1 mr-1"></i> ' . lang('menu_home');
+        $data['member']         = $current_member;
+        $data['is_admin']       = $is_admin;
+        $data['is_member']      = $is_member;
+        $data['headstyles']     = $headstyles;
+        $data['scripts']        = $loadscripts;
+        $data['scripts_init']   = $scripts_init;
+        $data['scripts_add']    = $scripts_add;
+        $data['data_detail']    = $data_detail;
+        $data['form_page']      = 'edit';
+        $data['form_title']     = '<i class="fa fa-edit mr-1 mr-1"></i> ' . lang('menu_home_edit');
+        $data['main_content']   = 'home/detailform';
+
+        $this->load->view(VIEW_BACK . 'template_index', $data);
+    }
     // ---------------------------------------------------------------------------------------------
 
     // =============================================================================================
@@ -326,7 +380,9 @@ class Home extends Admin_Controller
                     $status     = '';
                 }
 
-                $btn_edit   = '<a class="btn btn-sm btn-tooltip btn-default detaildata" title="Edit" href="' . base_url('home/detaildata/' . $row->id . '/edit') . '"><i class="fa fa-edit"></i></a>';
+                //$btn_edit   = '<a class="btn btn-sm btn-tooltip btn-default detaildata" title="Edit" href="' . base_url('home/detaildata/' . $row->id . '/edit') . '"><i class="fa fa-edit"></i></a>';
+                $btn_edit   = '<a href="'.base_url('home/detailedit/'.$id).'" class="btn btn-sm btn-default btn-tooltip" title="Edit"><i class="fa fa-edit"></i></a>';
+
                 $btn_banner = '<a class="btn btn-sm btn-tooltip btn-primary detaildata" title="Banner" href="' . base_url('home/detaildata/' . $row->id . '/banner') . '"><i class="fa fa-image"></i></a>';
                 $btn_banner = '';
                 $btn_view   = '<a class="btn btn-sm btn-tooltip btn-secondary detaildata" title="View" href="' . base_url('home/detaildata/' . $row->id . '/view') . '"><i class="fa fa-eye"></i></a>';
@@ -788,6 +844,163 @@ class Home extends Admin_Controller
         // Save Success
         $data = array('status'=>'success', 'message'=>'Status Pelanggan berhasil diedit.');
         die(json_encode($data));
+    }
+
+    /**
+     * Save Detail Function
+     */
+    function savedetail( $id = 0 ){
+        if ( ! $this->input->is_ajax_request() ) { redirect(base_url('home/new'), 'refresh'); }
+        $auth = auth_redirect( $this->input->is_ajax_request() );
+        if( !$auth ){
+            $data = array('status' => 'access_denied', 'url' => base_url('login'));
+            die(json_encode($data)); // JSON encode data
+        }
+
+        $an_token               = $this->security->get_csrf_hash();
+        $return                 = array('status' => 'error', 'token' => $an_token, 'message' => 'Data Detail tidak berhasil disimpan.');
+
+        $detail_id              = '';
+        $detail_name            = '';
+        $data_detail            = '';
+        if ( $id ) {
+            $id = an_decrypt($id);
+            if ( ! $data_detail = an_home_detail($id) ) {
+                $return['message'] = 'Data Detail tidak berhasil disimpan. ID Detail tidak ditemukan !';
+                die(json_encode($return));
+            }
+            $detail_id          = $data_detail->id;
+            $detail_name        = $data_detail->title;
+        }
+
+        // set variables
+        $current_member         = an_get_current_member();
+        $is_admin               = as_administrator($current_member);
+        $is_member              = as_member($current_member);
+        $datetime               = date('Y-m-d H:i:s');
+
+        // POST Input Form
+        $title                  = trim( $this->input->post('homedetail_title') );
+        $title                  = an_isset($title, '');
+        $short_name             = trim( $this->input->post('homedetail_short_name') );
+        $short_name             = an_isset($short_name, '');
+        $slug_name              = trim( $this->input->post('homedetail_slug') );
+        $slug_name              = an_isset($slug_name, '');
+        $description            = trim( $this->input->post('description') );
+        $description            = an_isset($description, '', '', false, false);
+
+        $this->form_validation->set_rules('homedetail_title','Nama Judul','required');
+        $this->form_validation->set_rules('homedetail_short_name','Nama Pendek','required');
+        $this->form_validation->set_message('required', '%s harus di isi');
+        $this->form_validation->set_error_delimiters('', '');
+
+        if ($this->form_validation->run() == FALSE){
+            $return['message'] = 'Data Detail tidak berhasil disimpan. '.validation_errors();
+            die(json_encode($return));
+        }else{
+            // Config Upload Image
+            $img_msg                    = '';
+            $img_ext                    = '';
+            $get_data_img               = '';
+            $img_upload                 = true;
+            $img_name                   = $slug_name.'-'.time();
+
+            $config['upload_path']      = PAGEHOME_IMG_PATH;
+            $config['allowed_types']    = 'jpg|png|jpeg';
+            $config['max_size']         = '2048';
+            $config['overwrite']        = true;
+            $config['file_name']        = $img_name;
+
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+            if( ! $this->upload->do_upload("homedetail_img")) {
+                $img_upload             = false;
+                $img_msg                = $this->upload->display_errors();
+            }
+
+            $created_by         = $current_member->username;
+            if ( $staff = an_get_current_staff() ) {
+                $created_by     = $staff->username;
+            }
+
+            $data = array(
+                'title'             => $title,
+                'short_name'        => $short_name,
+                'slug'              => $slug_name,
+                'content'           => $description,
+                'datecreated'       => $datetime,
+                'dateupdated'       => $datetime,
+                'datemodified'      => $datetime,
+            );
+
+            if ( $img_upload ) {
+                $get_data_img       = $this->upload->data();
+                $img_msg            = 'upload success';
+                $data['image']      = $get_data_img['file_name'];
+
+                create_thumbnail($data['image'] , PAGEHOME_IMG_PATH); // Create thumbnail
+            }
+
+            if ( $id ) 
+            {
+                unset($data['datecreated']);
+                $data['modified_by'] = $created_by;
+                if ( ! $update_data = $this->Model_Home->update_data_detail($id, $data) ) {
+                    $return['message'] = 'Data Detail tidak berhasil disimpan. Silahkan cek form detail !';
+                    die(json_encode($return));
+                }
+
+                // Delete Image
+                if ( $detail_id && $data_detail && $img_msg == "upload success" ) {
+                    $file_path = $file_thumb_path = $file = $file_thumb = ''; 
+                    if ( $data_detail->image ) {
+                        $file_path = PAGEHOME_IMG_PATH . $data_detail->image;
+                        if ( file_exists($file_path) ) {
+                            $file = $file_path;
+                        }
+                        $file_thumb_path = PAGEHOME_IMG_PATH . 'thumbnail/' . $data_detail->image;
+                        if ( file_exists($file_thumb_path) ) {
+                            $file_thumb = $file_thumb_path;
+                        }
+                    }
+                    if ( $file ) { unlink($file); }
+                    if ( $file_thumb ) { unlink($file_thumb); }
+                }
+
+            } else {
+                $slug                       = url_title($slug_name, 'dash', TRUE);
+                $check_slug                 = true;
+                if ( $detail_id == $id && strtolower($slug_name) == strtolower($title) ) {
+                    $check_slug             = false;
+                }
+
+                if ( $check_slug ) {
+                    $condition              = ' AND %slug% = "'.$slug.'" OR %slug% LIKE "'.$slug.'-%" ';
+                    if ( $check_slug = $this->Model_Home->get_all_detail_data(0, 0, $condition) ) {
+                        $count_client       = count($check_slug);
+                        $slug               = $slug .'-'. $count_client;
+                    }
+                }
+                
+                $data['slug']       = $slug;
+                $data['status']     = 1;
+                $data['created_by'] = $created_by;
+                if ( ! $saved_data = $this->Model_Home->save_data_detail($data) ) {
+                    $return['message'] = 'Data Detail tidak berhasil disimpan. Silahkan cek form Detail !';
+                    die(json_encode($return));
+                }
+                $id = $saved_data;
+            }
+
+            $id_encrypt         = an_encrypt($id);
+            $direct             = base_url('home/detailedit/'.$id_encrypt);
+            $direct             = base_url('home/new');
+            // Save Success
+            $return['status']   = 'success';
+            $return['message']  = 'Data Detail berhasil disimpan.';
+            $return['url']      = $direct;
+            die(json_encode($return));
+        }
     }
 
     /**

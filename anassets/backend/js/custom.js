@@ -7535,6 +7535,7 @@ var ServicesManage = function() {
 // ===========================================================
 var HomeManage = function() {
     var client_img;
+    var homedetail_img;
 
     var total_qty       = 0;
     var total_price     = 0;
@@ -7556,6 +7557,25 @@ var HomeManage = function() {
                 ]
             },
             placeholder: placeholder_editor,
+            theme: "snow"
+        });
+    }
+
+    // ---------------------------------
+    // Quill Editor Home Detail Load
+    // ---------------------------------
+    var text_editor_home    = $('#editor-homedetail');
+    var placeholder_editor_home  = $('#editor-homedetail').data("quill-placeholder");
+    if ( text_editor_home.length ) {
+        var quill_editor_homedetail    = new Quill('#editor-homedetail', {
+            modules: {
+                toolbar: [
+                    ["bold", "italic"],
+                    ["link", "blockquote", "code"],
+                    [{list: "ordered"}, {list: "bullet"}]
+                ]
+            },
+            placeholder: placeholder_editor_home,
             theme: "snow"
         });
     }
@@ -7605,6 +7625,15 @@ var HomeManage = function() {
 
     // Home Setting Function
     var handleHomeSetting = function() {
+        $('#homedetail_img_thumbnail').on('click', function(e) {
+            $('.file-image').trigger('click');
+        });
+
+        $('#homedetail_file, .file-image').on('change', function(e) {
+            readURL( $(this), $('#homedetail_img_thumbnail') );
+            homedetail_img = e.target.files;
+        });
+
         // Update Home
         // -----------------------------------------------
         $('button.general-setting').click(function(e){
@@ -7821,6 +7850,158 @@ var HomeManage = function() {
                     });
                 }
             });
+        });
+    };
+
+    // ---------------------------------
+    // Handle Validation Home Detail Manage
+    // ---------------------------------
+    var handleValidationHomeDetailManage = function() {
+        var form            = $('#form-homedetail');
+        var wrapper         = $('.wrapper-form-homedetail');
+
+        if ( ! form.length ) {
+            return;
+        }
+
+        form.validate({
+            errorElement: 'div', //default input error message container
+            errorClass: 'invalid-feedback', // default input error message class
+            focusInvalid: false, // do not focus the last invalid input
+            ignore: "",
+            rules: {
+                homedetail_title: {
+                    minlength: 3,
+                    required: true
+                },
+
+                homedetail_short_name: {
+                    minlength: 3,
+                    required: true
+                },
+            },
+            messages: {
+                homedetail_title: {
+                    required: "Nama Judul harus di isi !",
+                    minlength: "Minimal 3 karakter"
+                },
+
+                homedetail_short_name: {
+                    required: "Nama Pendek harus di isi !",
+                    minlength: "Minimal 3 karakter"
+                },
+            },
+            errorPlacement: function (error, element) { // render error placement for each input type
+                if (element.parent(".input-group").length) {
+                    error.insertAfter(element.parent(".input-group"));
+                } else if (element.attr("data-error-container")) { 
+                    error.appendTo(element.attr("data-error-container"));
+                } else if (element.parents('.radio-list').length) { 
+                    error.appendTo(element.parents('.radio-list').attr("data-error-container"));
+                } else if (element.parents('.radio-inline').length) { 
+                    error.appendTo(element.parents('.radio-inline').attr("data-error-container"));
+                } else if (element.parents('.checkbox-list').length) {
+                    error.appendTo(element.parents('.checkbox-list').attr("data-error-container"));
+                } else if (element.parents('.checkbox-inline').length) { 
+                    error.appendTo(element.parents('.checkbox-inline').attr("data-error-container"));
+                } else {
+                    error.insertAfter(element); // for other inputs, just perform default behavior
+                }
+            },
+            invalidHandler: function (event, validator) { //display error alert on form submit              
+                App.alert({
+                    type: 'danger', 
+                    icon: 'exclamation-triangle', 
+                    message: 'Ada beberapa error, silahkan cek formulir di bawah!', 
+                    container: wrapper, 
+                    closeInSeconds: 5,
+                    place: 'prepend'
+                }); 
+            },
+            highlight: function (element) { // hightlight error inputs
+                $(element).closest('.form-group').addClass('has-danger'); // set error class to the control group
+            },
+            unhighlight: function (element) { // revert the change done by hightlight
+                $(element).closest('.form-group').removeClass('has-danger'); // set error class to the control group
+            },
+            success: function (label) {
+                label.closest('.form-group').removeClass('has-danger'); // set success class to the control group
+            },
+            submitHandler: function (form) {
+                var url         = $(form).attr('action');
+                var data        = new FormData();
+                var description = quill_editor_homedetail.root.innerHTML;
+
+                // Get Token
+                data.append(App.kdName(), App.kdToken());
+
+                // get inputs
+                $('textarea.form-control, select.form-control, input.form-control',  $(form)).each(function(){
+                    data.append($(this).attr("name"), $(this).val());
+                });
+            
+                if (description) {
+                    data.append('description', description);
+                }
+            
+                if (homedetail_img) {
+                    $.each(homedetail_img, function(key, value){
+                        data.append('homedetail_img', value);
+                    });
+                }
+
+                bootbox.confirm("Apakah anda yakin akan simpan data detail ini ?", function(result) {
+                    if( result == true ){
+                        $.ajax({
+                            type:   "POST",
+                            url:    url,
+                            data:   data,
+                            processData:false,
+                            contentType:false,
+                            cache:false,
+                            beforeSend: function (){
+                                App.run_Loader('roundBounce');
+                            },
+                            success: function( response ){
+                                App.close_Loader();
+                                response = $.parseJSON(response);
+
+                                if( response.token ){
+                                    App.kdToken(response.token);
+                                }
+                                
+                                if( response.status == 'access_denied' ){
+                                    $(location).attr('href',response.url);
+                                }else{
+                                    if( response.status == 'success'){
+                                        App.notify({
+                                            icon: 'fa fa-check-circle', 
+                                            title: 'Success', 
+                                            message: response.message, 
+                                            type: 'success',
+                                        });
+                                        $(form)[0].reset();
+                                        setTimeout(function(){ $(location).attr('href',response.url); }, 1500);
+                                    }else{
+                                        App.notify({
+                                            icon: 'fa fa-exclamation-triangle', 
+                                            title: 'Failed', 
+                                            message: response.message, 
+                                            type: 'danger',
+                                        });
+                                    }
+                                }
+                            },
+                            error: function( jqXHR, textStatus, errorThrown ) {
+                                App.close_Loader();
+                                bootbox.alert('Terjadi kesalahan sistem! Ulangi proses beberapa saat lagi.', function(){ 
+                                    location.reload();
+                                });
+                            }
+                        });
+                    }
+                });
+            }
         });
     };
 
@@ -8114,6 +8295,7 @@ var HomeManage = function() {
         init: function() {
             handleSaveHome();
             handleHomeSetting();
+            handleValidationHomeDetailManage();
             handleGeneralClientManage();
             handleValidationClientManage();
         },

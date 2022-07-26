@@ -1875,7 +1875,7 @@ if (!function_exists('an_page_home_image')) {
         if ($image) {
             $img_src    = PAGEHOME_IMG_PATH . $image;
             if (file_exists($img_src)) {
-                $img_src = CLIENT_IMG . $image;
+                $img_src = PAGEHOME_IMG . $image;
             } else {
                 $img_src = $no_image;
             }

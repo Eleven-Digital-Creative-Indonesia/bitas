@@ -363,6 +363,22 @@ class Model_Home extends AN_Model{
     }
 
     /**
+     * Save data of detail
+     * 
+     * @author  Rifal
+     * @param   Array   $data   (Required)  Array data of detail
+     * @return  Boolean Boolean false on failed process or invalid data, otherwise true
+     */
+    function save_data_detail($data){
+        if( empty($data) ) return false;
+        if( $this->db->insert($this->detail, $data) ) {
+            $id = $this->db->insert_id();
+            return $id;
+        };
+        return false;
+    }
+
+    /**
      * Save data of client
      * 
      * @author  Rifal
