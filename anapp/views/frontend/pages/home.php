@@ -54,12 +54,27 @@
     </div>
     </div>  
 </section>
+<?php 
+    $home_list  = $this->Model_Home->get_home_detail();
+?>
+<?php if(!empty( $home_list)) : ?>
+    <!--Content About -->
+    <?php if($home_list['aboutuspage']->status == 1): ?>
+    <?php $this->load->view(VIEW_FRONT . 'pages/home/about.php'); ?>
+    <?php endif; ?>
 
-<!--Content About -->
-<?php $this->load->view(VIEW_FRONT . 'pages/home/about.php'); ?>
-<!--Content Product -->
-<?php $this->load->view(VIEW_FRONT . 'pages/home/product.php'); ?>
-<!--Content Services -->
-<?php $this->load->view(VIEW_FRONT . 'pages/home/services.php'); ?>
-<!--Content Contact -->
-<?php $this->load->view(VIEW_FRONT . 'pages/home/contact.php'); ?>
+    <!--Content Product -->
+    <?php if($home_list['productpage']->status == 1): ?>
+    <?php $this->load->view(VIEW_FRONT . 'pages/home/product.php'); ?>
+    <?php endif; ?>
+
+    <!--Content Services -->
+    <?php if($home_list['servicepage']->status == 1): ?>
+    <?php $this->load->view(VIEW_FRONT . 'pages/home/services.php'); ?>
+    <?php endif; ?>
+
+    <!--Content Contact -->
+    <?php if($home_list['contactpage']->status == 1): ?>
+    <?php $this->load->view(VIEW_FRONT . 'pages/home/contact.php'); ?>
+    <?php endif; ?>
+<?php endif; ?>
