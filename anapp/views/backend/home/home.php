@@ -7,7 +7,7 @@
                         <ol class="breadcrumb breadcrumb-links breadcrumb-light">
                             <li class="breadcrumb-item"><a href="<?php echo base_url('dashboard') ?>"><i class="fas fa-home"></i></a></li>
                             <li class="breadcrumb-item"><a href="#"><?php echo lang('menu_home') ?></a></li>
-                            <li class="breadcrumb-item active" aria-current="page"><?php echo lang('menu_home_new'); ?></li>
+                            <li class="breadcrumb-item active" aria-current="page"><?php echo lang('menu_home_list'); ?></li>
                         </ol>
                     </nav>
                 </div>
@@ -23,7 +23,7 @@
                 <div class="card-header border-0">
                     <div class="row align-items-center">
                         <div class="col">
-                            <h3 class="mb-0"><?php echo lang('menu_home_new'); ?> </h3>
+                            <h3 class="mb-0"><?php echo lang('menu_home_list'); ?> </h3>
                         </div>
                     </div>
                 </div>
