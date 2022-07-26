@@ -203,6 +203,9 @@ class Model_Home extends AN_Model{
             $conditions = str_replace("%slug%",             "slug", $conditions);
             $conditions = str_replace("%type%",             "type", $conditions);
             $conditions = str_replace("%status%",           "status", $conditions);
+            $conditions = str_replace("%datecreated%",      "DATE(datecreated)", $conditions);
+            $conditions = str_replace("%dateupdated%",      "DATE(dateupdated)", $conditions);
+            $conditions = str_replace("%datemodified%",     "DATE(datemodified)", $conditions);
         }
 
         if( !empty($order_by) ){
@@ -212,6 +215,9 @@ class Model_Home extends AN_Model{
             $order_by   = str_replace("%slug%",             "slug", $order_by);
             $order_by   = str_replace("%type%",             "type", $order_by);
             $order_by   = str_replace("%status%",           "status", $order_by);
+            $order_by   = str_replace("%datecreated%",      "datecreated", $order_by);
+            $order_by   = str_replace("%dateupdated%",      "dateupdated", $order_by);
+            $order_by   = str_replace("%datemodified%",     "datemodified", $order_by);
         }
 
         $sql = 'SELECT SQL_CALC_FOUND_ROWS * FROM ' . $this->home . ' WHERE id > 0';

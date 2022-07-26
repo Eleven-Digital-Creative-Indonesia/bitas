@@ -1853,6 +1853,25 @@ if (!function_exists('an_client_image')) {
     }
 }
 
+if (!function_exists('an_page_home_image')) {
+    function an_page_home_image($image = '')
+    {
+        $CI = &get_instance();
+        $no_image = ASSET_PATH . 'backend/img/no_image.jpg';
+        if ($image) {
+            $img_src    = PAGEHOME_IMG_PATH . $image;
+            if (file_exists($img_src)) {
+                $img_src = PAGEHOME_IMG . $image;
+            } else {
+                $img_src = $no_image;
+            }
+            return $img_src;
+        } else {
+            return $no_image;
+        }
+    }
+}
+
 /*
 |--------------------------------------------------------------------------
 | Get Logo Image

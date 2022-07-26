@@ -200,6 +200,8 @@ define('SERVICES_IMG',              BASE_URL . ASSET_FOLDER . '/upload/services/
 define('SERVICES_IMG_PATH',         './'     . ASSET_FOLDER . '/upload/services/');
 define('CLIENT_IMG',                BASE_URL . ASSET_FOLDER . '/upload/client/');
 define('CLIENT_IMG_PATH',           './'     . ASSET_FOLDER . '/upload/client/');
+define('PAGEHOME_IMG',              BASE_URL . ASSET_FOLDER . '/upload/home/');
+define('PAGEHOME_IMG_PATH',         './'     . ASSET_FOLDER . '/upload/home/');
 
 /*
 |--------------------------------------------------------------------------

@@ -37,6 +37,7 @@
                                     <th class="width55 text-center"><?php echo lang('short_name') ?></th>
                                     <!-- <th class="width15 text-center"><?php echo lang('type') ?></th> -->
                                     <th class="width15 text-center"><?php echo lang('status') ?></th>
+                                    <th scope="col" class="text-center"><?php echo lang('update_date'); ?></th>
                                     <th class="width10 text-center"><?php echo lang('actions') ?></th>
                                 </tr>
                                 <tr role="row" class="filter">
@@ -58,6 +59,20 @@
                                             <option value="active">AKTIIF</option>
                                             <option value="notactive">TIDAK AKTIF</option>
                                         </select>
+                                    </td>
+                                    <td class="px-1">
+                                        <div class="input-group input-group-sm date date-picker mb-1" data-date-format="yyyy-mm-dd">
+                                            <input type="text" class="form-control form-control-sm form-filter" readonly name="search_dateupdated_min" placeholder="From" />
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-sm btn-white btn-flat" type="button"><i class="ni ni-calendar-grid-58 text-primary"></i></button>
+                                            </span>
+                                        </div>
+                                        <div class="input-group input-group-sm date date-picker" data-date-format="yyyy-mm-dd">
+                                            <input type="text" class="form-control form-control-sm form-filter" readonly name="search_dateupdated_max" placeholder="To" />
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-sm btn-white btn-flat" type="button"><i class="ni ni-calendar-grid-58 text-primary"></i></button>
+                                            </span>
+                                        </div>
                                     </td>
                                     <td style="text-align: center;">
                                         <button class="btn btn-sm btn-outline-default btn-tooltip filter-submit" id="btn_homedetail_list" title="Search"><i class="fa fa-search"></i></button>

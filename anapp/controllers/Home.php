@@ -243,6 +243,10 @@ class Home extends Admin_Controller
         //$s_type             = an_isset($s_type, '');
         $s_status           = $this->input->post('search_status');
         $s_status           = an_isset($s_status, '');
+        $s_date_min         = $this->input->post('search_dateupdated_min');
+        $s_date_min         = an_isset($s_dateupdated_min, '', '', true);
+        $s_date_max         = $this->input->post('search_dateupdated_max');
+        $s_date_max         = an_isset($s_dateupdated_max, '', '', true);
 
         if (!empty($s_name)) {
             $condition .= str_replace('%s%', $s_name, ' AND %name% LIKE "%%s%%"');
@@ -258,7 +262,9 @@ class Home extends Admin_Controller
             $s_status   = ($s_status == 'active') ? 1 : 0;
             $condition .= str_replace('%s%', $s_status, ' AND %status% = %s%');
         }
-
+        if ( !empty($s_date_min) )          { $condition .= ' AND %dateupdated% >= ?'; $params[] = $s_date_min; }
+        if ( !empty($s_date_max) )          { $condition .= ' AND %dateupdated% <= ?'; $params[] = $s_date_max; }
+        
         if ($column == 1) {
             $order_by .= '%name% ' . $sort;
         } elseif ($column == 2) {
@@ -267,6 +273,8 @@ class Home extends Admin_Controller
             $order_by .= '%type% ' . $sort;
         } elseif ($column == 4) {
             $order_by .= '%status% ' . $sort;
+        } elseif( $column == 5 ) { 
+            $order_by .= '%dateupdated% ' . $sort; 
         }
 
         $data_list          = $this->Model_Home->get_all_detail_data($limit, $offset, $condition, $order_by);
@@ -278,6 +286,21 @@ class Home extends Admin_Controller
             $i = $offset + 1;
             foreach ($data_list as $row) {
                 $lbl_class  = 'default';
+                
+                $id             = an_encrypt($row->id);
+                $img_src        = an_page_home_image($row->image, true);
+                $name         = '
+                    <div class="media align-items-center">
+                        <a href="'.base_url('home/detailedit/' . $id . '').'" class="avatar mr-3">
+                            <img alt="Image placeholder" src="'. $img_src .'">
+                        </a>
+                        <div class="media-body">
+                            <a href="'.base_url('home/detailedit/' . $id . '').'" class="">
+                                <span class="name mb-0 font-weight-bold text-primary">'. $row->name .'</span>
+                            </a>
+                        </div>
+                    </div>';
+
                 if ($row->type == 'email') {
                     $lbl_class = 'primary';
                 }
@@ -286,21 +309,32 @@ class Home extends Admin_Controller
                 }
                 $type       = '<span class="badge badge-sm badge-' . $lbl_class . '">' . strtoupper($row->type) . '</span>';
 
+                /*
                 $status     = '<span class="badge badge-sm badge-danger">TIDAK AKTIF</span>';
                 if ($row->status > 0) {
                     $status = '<span class="badge badge-sm badge-success">AKTIF</span>';
                 }
+                */
+
+                if ( $row->status == 1 ) {
+                    $status     = '<a href="'.base_url('home/detailstatus/'.$id).'" class="btn btn-sm btn-outline-success btn-status-detail" data-detail="'.$row->name.'" data-status="'.$row->status.'"><i class="fa fa-check"></i> Active</a>';
+                } else {
+                    $status     = '<a href="'.base_url('home/detailstatus/'.$id).'" class="btn btn-sm btn-outline-danger btn-status-detail" data-detail="'.$row->name.'" data-status="'.$row->status.'"><i class="fa fa-times"></i> Non-Active</a>';
+                }
 
                 $btn_edit   = '<a class="btn btn-sm btn-tooltip btn-default detaildata" title="Edit" href="' . base_url('home/detaildata/' . $row->id . '/edit') . '"><i class="fa fa-edit"></i></a>';
+                $btn_banner = '<a class="btn btn-sm btn-tooltip btn-primary detaildata" title="Banner" href="' . base_url('home/detaildata/' . $row->id . '/banner') . '"><i class="fa fa-image"></i></a>';
+                $btn_banner = '';
                 $btn_view   = '<a class="btn btn-sm btn-tooltip btn-secondary detaildata" title="View" href="' . base_url('home/detaildata/' . $row->id . '/view') . '"><i class="fa fa-eye"></i></a>';
 
                 $records["aaData"][]    = array(
                     an_center($i),
-                    $row->name,
+                    $name,
                     $row->short_name,
                     //an_center($type),
                     an_center($status),
-                    an_center($btn_edit . $btn_view),
+                    an_center( date('Y-m-d @H:i', strtotime($row->dateupdated)) ),
+                    an_center($btn_edit . $btn_banner . $btn_view),
                 );
                 $i++;
             }
