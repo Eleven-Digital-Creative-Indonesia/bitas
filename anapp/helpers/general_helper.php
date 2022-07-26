@@ -1698,7 +1698,6 @@ if (!function_exists('an_product_by')) {
     }
 }
 
-
 if (!function_exists('an_client')) {
     /**
      * Get client data
@@ -1861,7 +1860,7 @@ if (!function_exists('an_page_home_image')) {
         if ($image) {
             $img_src    = PAGEHOME_IMG_PATH . $image;
             if (file_exists($img_src)) {
-                $img_src = PAGEHOME_IMG . $image;
+                $img_src = CLIENT_IMG . $image;
             } else {
                 $img_src = $no_image;
             }
@@ -1955,6 +1954,21 @@ if (!function_exists('an_aboutus_history_image')) {
         } else {
             return $no_image;
         }
+    }
+}
+
+if (!function_exists('an_aboutus_detail')) {
+    /**
+     * Get detail data
+     * @author  Rifal
+     * @param   Int     $id     (Optional)  client id
+     * @return  Data
+     */
+    function an_aboutus_detail($id = '', $is_active = false)
+    {
+        $CI = &get_instance();
+        $client = $CI->Model_Aboutus->get_aboutus_detaildata($id, $is_active);
+        return $client;
     }
 }
 

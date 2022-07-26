@@ -68,6 +68,27 @@ class Model_Aboutus extends AN_Model{
     }
 
     /**
+     * Get About Us Detail
+     * 
+     * @author  Rifal
+     * @param   Int     $id     (Optional)  ID of Detail
+     * @return  Mixed   False on invalid date parameter, otherwise data of history(s).
+     */
+    function get_aboutus_detaildata($id='', $is_active = false){
+        if ( !empty($id) ) { 
+            $this->db->where($this->primary, $id);
+        }
+
+        if ( $is_active ) {
+            $this->db->where('status', 1);
+        }
+        
+        $this->db->order_by("id", "ASC"); 
+        $query      = $this->db->get($this->detail);        
+        return ( !empty($id) ? $query->row() : $query->result() );
+    }
+
+    /**
      * Get About Us History
      * 
      * @author  Rifal

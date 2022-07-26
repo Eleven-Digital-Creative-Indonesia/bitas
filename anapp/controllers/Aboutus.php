@@ -360,6 +360,7 @@ class Aboutus extends Admin_Controller
             $i = $offset + 1;
             foreach ($data_list as $row) {
                 $lbl_class  = 'default';
+                $id             = an_encrypt($row->id);
                 if ($row->type == 'email') {
                     $lbl_class = 'primary';
                 }
@@ -367,10 +368,18 @@ class Aboutus extends Admin_Controller
                     $lbl_class = 'success';
                 }
                 $type       = '<span class="badge badge-sm badge-' . $lbl_class . '">' . strtoupper($row->type) . '</span>';
-
+                
+                /*
                 $status     = '<span class="badge badge-sm badge-danger">TIDAK AKTIF</span>';
                 if ($row->status > 0) {
                     $status = '<span class="badge badge-sm badge-success">AKTIF</span>';
+                }
+                */
+
+                if ( $row->status == 1 ) {
+                    $status     = '<a href="'.base_url('aboutus/detailstatus/'.$id).'" class="btn btn-sm btn-outline-success btn-status-detailaboutus" data-detail="'.$row->name.'" data-status="'.$row->status.'"><i class="fa fa-check"></i> Active</a>';
+                } else {
+                    $status     = '<a href="'.base_url('aboutus/detailstatus/'.$id).'" class="btn btn-sm btn-outline-danger btn-status-detailaboutus" data-detail="'.$row->name.'" data-status="'.$row->status.'"><i class="fa fa-times"></i> Non-Active</a>';
                 }
 
                 $btn_edit   = '<a class="btn btn-sm btn-tooltip btn-default detaildata" title="Edit" href="' . base_url('aboutus/detaildata/' . $row->id . '/edit') . '"><i class="fa fa-edit"></i></a>';
@@ -806,6 +815,55 @@ class Aboutus extends Admin_Controller
             $return['url']      = $direct;
             die(json_encode($return));
         }
+    }
+
+    /**
+     * Status Home Function
+     */
+    function detailstatus( $id = 0 ){
+        if ( ! $this->input->is_ajax_request() ) { redirect(base_url('about/new'), 'refresh'); }
+        $auth = auth_redirect( $this->input->is_ajax_request() );
+        if( !$auth ){
+            $data = array('status' => 'access_denied', 'url' => base_url('login'));
+            die(json_encode($data)); // JSON encode data
+        }
+
+        if( !$id ){
+            $data = array('status' => 'error', 'message' => 'ID tidak ditemukan !');
+            die(json_encode($data));
+        }
+
+        $id = an_decrypt($id);
+        if ( ! $data_detail = an_aboutus_detail($id) ) {
+            $data = array('status' => 'error', 'message' => 'Data Detail tidak ditemukan !');
+            die(json_encode($data));
+        }
+
+        // set variables
+        $current_member     = an_get_current_member();
+        $is_admin           = as_administrator($current_member);
+        $datetime           = date('Y-m-d H:i:s');
+        $status             = ( $data_detail->status == 1 ) ? 0 : 1;
+
+        $modified_by        = $current_member->username;
+        if ( $staff = an_get_current_staff() ) {
+            $modified_by    = $staff->username;
+        }
+
+        $data = array(
+            'status'        => $status,
+            'modified_by'   => $modified_by,
+            'datemodified'  => $datetime,
+        );
+
+        if ( ! $update_data = $this->Model_Aboutus->update_data_detail($id, $data) ) {
+            $data = array('status' => 'error', 'message' => 'Status Detail tidak berhasil diedit !');
+            die(json_encode($data));
+        }
+
+        // Save Success
+        $data = array('status'=>'success', 'message'=>'Status Detail berhasil diedit.');
+        die(json_encode($data));
     }
 }
 
