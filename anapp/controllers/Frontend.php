@@ -58,6 +58,8 @@ class Frontend extends AN_Controller
     {
         $data['title']          = 'About Us';
         $data['main_content']   = 'pages/about';
+        $home_list              = $this->Model_Home->get_home_detail();
+        $data['homedata']       = $home_list;
         $aboutus_list           = $this->Model_Aboutus->get_aboutus_detail();
         $data['aboutusdata']    = $aboutus_list;
         $options_list           = $this->Model_Option->get_options();

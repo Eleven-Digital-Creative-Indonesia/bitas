@@ -4,13 +4,13 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="page__title">
-                <?php if(!empty($aboutusdata['description']) && $aboutusdata['description']->status == 1) : ?>
+                <?php if(!empty($homedata['aboutuspage']) && $homedata['aboutuspage']->status == 1) : ?>
                     <h1 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
-                    <?php echo $aboutusdata['description']->title; ?>
+                    <?php echo $homedata['aboutuspage']->title; ?>
                     </h1>
                     <p class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
                     <?php
-                        $arrData        = explode(" ", $aboutusdata['description']->content);
+                        $arrData        = explode(" ", $homedata['aboutuspage']->content);
                         $arrDataText    = array();
                         $strText        = "";
                         $i=0;
@@ -30,7 +30,7 @@
                     ?>
                     </p>
                     <div class="shadowTitle shadowTitle__2 wow fadeInDown" data-wow-duration="1s" data-wow-delay="1.3s">
-                    <?php echo $aboutusdata['description']->name; ?>
+                    <?php echo $homedata['aboutuspage']->short_name; ?>
                     </div>
                     <div class="button-area mt2 wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.6s">
                     <a href="<?php echo base_url(); ?>about" class="btn btn__primary">Lihat Selengkapnya</a>
