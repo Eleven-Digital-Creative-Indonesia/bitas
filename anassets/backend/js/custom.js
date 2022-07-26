@@ -7395,18 +7395,22 @@ var ServicesManage = function() {
                     minlength: 3,
                     required: true
                 },
+                /*
                 services_category: {
                     required: true
                 },
+                */
             },
             messages: {
                 services_name: {
                     required: "Nama Layanan harus di isi !",
                     minlength: "Minimal 3 karakter"
                 },
+                /*
                 services_category: {
                     required: "Kategori Layanan harus di pilih !",
                 },
+                */
             },
             errorPlacement: function (error, element) { // render error placement for each input type
                 if (element.parent(".input-group").length) {
@@ -7447,7 +7451,7 @@ var ServicesManage = function() {
             submitHandler: function (form) {
                 var url         = $(form).attr('action');
                 var data        = new FormData();
-                var description = quill_editor.root.innerHTML;
+                //var description = quill_editor.root.innerHTML;
 
                 // Get Token
                 data.append(App.kdName(), App.kdToken());
@@ -7456,10 +7460,12 @@ var ServicesManage = function() {
                 $('textarea.form-control, select.form-control, input.form-control',  $(form)).each(function(){
                     data.append($(this).attr("name"), $(this).val());
                 });
-            
+                
+                /*
                 if (description) {
                     data.append('description', description);
                 }
+                */
             
                 if (services_img) {
                     $.each(services_img, function(key, value){

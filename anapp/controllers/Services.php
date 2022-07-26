@@ -362,7 +362,7 @@ class Services extends Admin_Controller
         $description            = an_isset($description, '', '', false, false);
 
         $this->form_validation->set_rules('services_name','Nama Layanan','required');
-        $this->form_validation->set_rules('services_category','Kategori','required');
+        //$this->form_validation->set_rules('services_category','Kategori','required');
         $this->form_validation->set_message('required', '%s harus di isi');
         $this->form_validation->set_error_delimiters('', '');
 

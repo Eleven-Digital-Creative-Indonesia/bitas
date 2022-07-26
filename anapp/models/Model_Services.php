@@ -148,7 +148,7 @@ class Model_Services extends AN_Model{
         $sql = 'SELECT SQL_CALC_FOUND_ROWS
                     P.*, PC.name AS category, PC.slug AS slug_category
                 FROM ' . $this->services . ' P
-                INNER JOIN ' . $this->services_category . ' PC ON (P.id_category = PC.id)
+                LEFT JOIN ' . $this->services_category . ' PC ON (P.id_category = PC.id)
                 WHERE P.id >= 0 ';
 
         if( !empty($conditions) )   { $sql .= $conditions; }

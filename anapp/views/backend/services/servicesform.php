@@ -64,6 +64,7 @@
                                                     <input type="text" name="services_name" id="services_name" class="form-control" placeholder="<?php echo lang('services_name'); ?>" value="<?php echo( $data_services ? $data_services->name : ''); ?>">
                                                 </div>
                                             </div>
+                                            <!--
                                             <div class="form-group">
                                                 <label class="form-control-label" for="services_category"><?php echo lang('category'); ?> <span class="required">*</span></label>
                                                 <div class="input-group">
@@ -85,15 +86,15 @@
                                                             }
                                                         ?>
                                                     </select>
-                                                    <!--
                                                     <div class="input-group-append">
                                                         <button class="btn btn-outline-default" type="button" id="btn-modal-category">
                                                             <i class="fa fa-plus"></i> <?php echo lang('category'); ?>
                                                         </button>
                                                     </div>
-                                                        -->
                                                 </div>
                                             </div>
+                                            -->
+                                            <!--
                                             <div class="form-group">
                                                 <label class="form-control-label" for="short_description"><?php echo lang('short_description'); ?> </label>
                                                 <div class="input-group input-group-merge input-group-alternative">
@@ -109,6 +110,7 @@
                                                     <?php echo ( $data_services ? $data_services->description : ''); ?>
                                                 </div>
                                             </div>
+                                            -->
                                         </div>
                                         <div class="col-xl-4 order-xl-1 bg-secondary py-2">
                                             <div class="form-group">
