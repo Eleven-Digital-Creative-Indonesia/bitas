@@ -255,7 +255,7 @@ class Frontend extends AN_Controller
         $isSuccess = $this->an_email->send_email_contact($data);
 
         echo '<pre>';
-        print_r($isSuccess);
+        print_r($isSuccess." TES");
         die();
         if($isSuccess)
         {

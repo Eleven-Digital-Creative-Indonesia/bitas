@@ -51,7 +51,7 @@ class AN_Email
             $mail               = $this->CI->phpmailer;
 
             $mail->IsSMTP();                // telling the class to use SMTP
-            $mail->SMTPDebug    = false;    // debug email sending (inspect: "Network" in browser)
+            $mail->SMTPDebug    = true;    // debug email sending (inspect: "Network" in browser)
 
             $mail->SMTPOptions  = array(
                 'ssl' => array(
@@ -80,9 +80,11 @@ class AN_Email
             $mail->WordWrap     = 50;
 
             if ($mail->Send()) {
+                die('SUCCESS');
                 an_log_notif('email', $subject, $to, $message->plain, 'SUCCESS');
                 return true;
             } else {
+                die('FAILED TES');
                 an_log_notif('email', $subject, $to, $message->plain, 'FAILED');
                 return false;
             }
