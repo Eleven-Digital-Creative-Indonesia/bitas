@@ -539,8 +539,10 @@ class Setting extends Admin_Controller
         if (!empty($s_type)) {
             $condition .= str_replace('%s%', $s_type, ' AND %type% = "%s%"');
         }
+
+        $s_status = 1;
         if (!empty($s_status)) {
-            $s_status   = ($s_status == 'active') ? 1 : 0;
+            //$s_status   = ($s_status == 'active') ? 1 : 0;
             $condition .= str_replace('%s%', $s_status, ' AND %status% = %s%');
         }
 
@@ -1068,6 +1070,7 @@ class Setting extends Admin_Controller
         $notif_title    = an_isset($notif_title, '');
         $notif_status   = $this->input->post('notif_status');
         $notif_status   = an_isset($notif_status, '');
+        $notif_status   = 1;
         $content_email  = $this->input->post('content_email');
         $content_email  = an_isset($content_email, '', '', false, false);
         $content_plain  = $this->input->post('content_plain');

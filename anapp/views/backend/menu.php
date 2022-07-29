@@ -798,9 +798,11 @@ if($typePackage == ELPRO_PACKAGE_BRONZE)
                     unset($nav['sub'][$index]);
                 }
 
+                /*
                 if($sub['nav'] == 'notification'){
                     unset($nav['sub'][$index]);
                 }
+                */
 
                 if($sub['nav'] == 'withdraw'){
                     unset($nav['sub'][$index]);

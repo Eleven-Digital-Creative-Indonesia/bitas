@@ -62,7 +62,7 @@ class AN_Email
             );
 
             $mail->SMTPAuth     = true;                 // Enable SMTP authentication (TRUE / FALSE)
-            $mail->SMTPSecure   = "tls"; // tls/ssl
+            $mail->SMTPSecure   = "ssl"; // tls/ssl
             $mail->Host         = $mailserver_host;     // sets GMAIL as the SMTP server
             $mail->Port         = $port;                // gmail smtp port
             $mail->Username     = $username;            // SMTP gmail address
@@ -827,6 +827,56 @@ class AN_Email
             return $message;
         } else {
             $send       = $this->send($shop_order->email_consumer, $subject, $message, $from_mail, $from_name);
+            if ($send) {
+                return true;
+            }
+            return false;
+        }
+    }
+
+    /**
+     * Send email to Contact function.
+     *
+     * @return  Mixed
+     */
+    function send_email_contact($data, $view = false)
+    {
+        if (!$data) return false;
+        if (empty($data['email'])) return false;
+
+        if (!$notif = $this->CI->Model_Option->get_notification_by('slug', 'notification-contact', 'email')) {
+            return false;
+        }
+
+        if ($notif->status == 0) return false;
+        if (empty($notif->content)) return false;
+
+
+        $from_name      = $data['username'];
+        $from_mail      = $data['email'];
+
+        // Set Variable Email
+        $subject        = (!empty($notif->title)) ? $notif->title : 'Informasi Email User';
+        $text           = $notif->content;
+
+        $text           = str_replace("%name%",             $from_name, $text);
+        $text           = str_replace("%email%",            $from_mail, $text);
+        $text           = str_replace("%phone%",            $data['phone'], $text);
+        $text           = str_replace("%company_name%",     $data['company_name'], $text);
+        $text           = str_replace("%message%",          $data['message'], $text);
+
+        $plain_mail     = an_html2text($text);
+        $html_mail      = an_notification_email_template($text, $subject);
+
+        $message        = new stdClass();
+        $message->plain = $plain_mail;
+        $message->html  = $html_mail;
+
+        if ($view) {
+            return $message;
+        } else {
+            $mail       = $data['options']['company_email'];
+            $send       = $this->send($mail, $subject, $message, $from_mail, $from_name, true);
             if ($send) {
                 return true;
             }

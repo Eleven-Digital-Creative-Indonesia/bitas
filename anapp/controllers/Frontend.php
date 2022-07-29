@@ -47,6 +47,7 @@ class Frontend extends AN_Controller
         $data['serviceslist']   = $services_list;
         $client_list            = $this->Model_Home->get_all_client();
         $data['clientlist']     = $client_list;
+        $data['message']        = "";
         
         $this->load->view(VIEW_FRONT . 'template', $data);
     }
@@ -198,6 +199,71 @@ class Frontend extends AN_Controller
 
         $services_list          = $this->Model_Services->get_all_services();
         $data['serviceslist']   = $services_list;
+        $this->load->view(VIEW_FRONT . 'template', $data);
+    }
+    
+    /**
+     * Save Contact Us Page
+     */
+    public function savecontact($isHome = false)
+    {
+        $data = $_POST;
+        
+        $home_list              = $this->Model_Home->get_home_detail();
+        $data['homedata']       = $home_list;
+        $options_list           = $this->Model_Option->get_options();
+        $data['options']        = $options_list;
+
+        //$limit=0, $offset=0, $conditions='', $order_by='', $params=''
+        $condition = ' AND %status% = 1'; 
+        $data_list              = $this->Model_Product->get_all_product(0, 0, $condition, '', '');
+        $data['products']       = $data_list;
+        $data['message']        = "";
+
+        if($isHome)
+        {
+            $data['title']          = 'Contact Us';
+            $data['main_content']   = 'pages/contact';
+
+            $services_list          = $this->Model_Services->get_all_services();
+            $data['serviceslist']   = $services_list;
+        }else{
+            $data['title']          = 'Home';
+            $data['main_content']   = 'pages/home';
+            $aboutus_list           = $this->Model_Aboutus->get_aboutus_detail();
+            $data['aboutusdata']    = $aboutus_list;
+
+            $services_list          = $this->Model_Services->get_all_services();
+            $arrDataService         = array();
+            if(!empty($services_list)){
+                $i      = 1;
+                $index  = 1;
+                foreach($services_list AS $row){
+                    if($row->status != 1) continue;
+                    if($i > 4) break;
+                    $arrDataService[$index][] = $row;
+                    if($i % 4 == 0) $index++;
+                    $i++;
+                }
+            }
+            $data['servicesdata']   = $arrDataService;
+            $data['serviceslist']   = $services_list;
+            $client_list            = $this->Model_Home->get_all_client();
+            $data['clientlist']     = $client_list;
+        }
+
+        $isSuccess = $this->an_email->send_email_contact($data);
+
+        echo '<pre>';
+        print_r($isSuccess);
+        die();
+        if($isSuccess)
+        {
+            $data['message']        = "Pesan anda berhasil di kirim.";
+        }else{
+            $data['message']        = "Anda gagal mengirim pesan.";
+        }
+
         $this->load->view(VIEW_FRONT . 'template', $data);
     }
 
