@@ -31,25 +31,28 @@
     <div class="row">
         <div class="col-sm-6">
         <div class="contact__form wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1.2s">
-            <form action="">
-            <div class="form__field">
-                <input type="text" value="" placeholder="Name" class="control">
-            </div>
-            <div class="form__field">
-                <input type="email" value="" placeholder="Email" class="control">
-            </div>
-            <div class="form__field">
-                <input type="text" value="" placeholder="Phone Number" class="control">
-            </div>
-            <div class="form__field">
-                <input type="text" value="" placeholder="Company Name" class="control">
-            </div>
-            <div class="form__field">
-                <textarea name="" id="" cols="30" rows="6" placeholder="Your Message" class="control"></textarea>                  
-            </div>
-            <div class="button-area">
-                <a href="" class="btn btn__primary">Send Message</a>
-            </div>
+            <?php 
+                $form_action = base_url('frontend/savecontact');
+            ?>
+            <form action="<?php echo $form_action; ?>" role="form" method="post" class="form-horizontal" id="form_contact">
+                <div class="form__field">
+                    <input type="text" name="username" id="username" placeholder="Name" class="control" required>
+                </div>
+                <div class="form__field">
+                    <input type="email" name="email" id="email" placeholder="Email" class="control" required>
+                </div>
+                <div class="form__field">
+                    <input type="text" name="phone" id="phone" placeholder="Phone Number" class="control">
+                </div>
+                <div class="form__field">
+                    <input type="text" name="company_name" id="company_name" placeholder="Company Name" class="control">
+                </div>
+                <div class="form__field">
+                    <textarea name="message" id="message" cols="30" rows="6" placeholder="Your Message" class="control" required></textarea>                  
+                </div>
+                <div class="button-area">
+                    <button type="submit" class="btn btn__primary">Kirim Pesan</button> 
+                </div>
             </form>
         </div>
         </div>
