@@ -220,7 +220,7 @@ class Frontend extends AN_Controller
         $data['products']       = $data_list;
         $data['message']        = "";
 
-        if($isHome)
+        if(!$isHome)
         {
             $data['title']          = 'Contact Us';
             $data['main_content']   = 'pages/contact';
