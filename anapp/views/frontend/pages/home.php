@@ -1,3 +1,7 @@
+<?php 
+    $home_list  = $this->Model_Home->get_home_detail();
+    $img_src    = an_page_home_image($home_list['homepage']->image, true);
+?>
 <!--Cover-->
 <section class="page cover" id="home">
     <!--Content-->      
@@ -25,7 +29,11 @@
                 <div class="col-lg-6 col-sm-6">
                     <div class="hero wow fadeIn" data-wow-duration="1s" data-wow-delay="0.8s">
                     <div class="hero round-1">
-                        <img src="<?= FE_IMG_PATH ?>hero-banner.png">
+                        <?php if(!empty($home_list['homepage']->image)) : ?>
+                            <img src="<?php echo $img_src; ?>">
+                        <?php else: ?>
+                            <img src="<?= FE_IMG_PATH ?>hero-banner.png">
+                        <?php endif; ?>
                     </div>
                     </div>
                 </div>                
