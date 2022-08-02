@@ -253,10 +253,6 @@ class Frontend extends AN_Controller
         }
 
         $isSuccess = $this->an_email->send_email_contact($data);
-
-        echo '<pre>';
-        print_r($isSuccess." TES");
-        die();
         if($isSuccess)
         {
             $data['message']        = "Pesan anda berhasil di kirim.";
