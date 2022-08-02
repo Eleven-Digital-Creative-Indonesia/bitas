@@ -228,7 +228,7 @@ $config['mail_sender_admin']        = 'admin@alphanet.id';
 
 $config['email_active']             = TRUE;
 //$config['mailserver_host']          = 'mail.elevendigital.id';
-$config['mailserver_host']          = 'srv104.niagahoster.com'; 
+$config['mailserver_host']          = 'ssl://srv104.niagahoster.com'; 
 $config['mailserver_port']          = 465;
 $config['mailserver_username']      = 'admin@elevendigital.id';
 $config['mailserver_password']      = 'P@sselevendigital.id';
