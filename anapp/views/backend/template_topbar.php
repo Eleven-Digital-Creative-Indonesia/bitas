@@ -81,10 +81,12 @@
                                 <img height="15px" src="<?php echo $img_lang ?>" alt="<?php echo $txt_lang; ?>" /> <?php echo $txt_lang; ?>
                             </h6>
                         </div>
+                        <!--
                         <a href="javascript:;" data-lang="<?php echo $oth_link ?>" class="dropdown-item switchlang">
                             <img height="15px" src="<?php echo $oth_img; ?>" style="margin-right: 10px" /> 
                             <?php echo $oth_lang ?>
                         </a>
+                        -->
                     </div>
                 </li>
                 <?php if ( ! $is_admin ) { ?>
@@ -117,22 +119,22 @@
                         </div>
                         <a href="<?php echo base_url('profile') ?>" class="dropdown-item">
                             <i class="ni ni-single-02"></i>
-                            <span>Profile</span>
+                            <span>Profil</span>
                         </a>
                         <a href="<?php echo base_url('') ?>" class="dropdown-item" target="blank">
                             <i class="ni ni-tv-2"></i>
-                            <span>Frontend</span>
+                            <span>Halaman Depan</span>
                         </a>
                         <div class="dropdown-divider"></div>
                         <?php if ( an_is_assuming() ): ?>
                             <a href="<?php echo base_url('backend/revert') ?>" class="dropdown-item text-warning">
                                 <i class="fa fa-user-secret"></i>
-                                <span>Revert</span>
+                                <span>Kembali</span>
                             </a>
                         <?php endif ?>
                         <a href="<?php echo base_url('logout') ?>" class="dropdown-item text-danger">
                             <i class="ni ni-user-run"></i>
-                            <span>Logout</span>
+                            <span>Keluar</span>
                         </a>
                     </div>
                 </li>

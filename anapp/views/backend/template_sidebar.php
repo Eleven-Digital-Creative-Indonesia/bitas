@@ -121,7 +121,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo base_url('logout') ?>">
                             <i class="ni ni-button-power text-warning"></i>
-                            <span class="nav-link-text">Logout</span>
+                            <span class="nav-link-text">Keluar</span>
                         </a>
                     </li>
                 </ul>
