@@ -42,9 +42,9 @@
             <!--Social-->
             <div class="social hidden-xs">
             <ul>
-                <li><a href=""><img src="<?= FE_IMG_PATH ?>icon/twitter.svg" alt=""></a></li>
-                <li><a href=""><img src="<?= FE_IMG_PATH ?>icon/facebook.svg" alt=""></a></li>
-                <li><a href=""><img src="<?= FE_IMG_PATH ?>icon/instagram.svg" alt=""></a></li>
+                <li><a href="<?php echo $options['twitter_link']; ?>" target="blank"><img src="<?= FE_IMG_PATH ?>icon/twitter.svg" alt=""></a></li>
+                <li><a href="<?php echo $options['facebook_link']; ?>" target="blank"><img src="<?= FE_IMG_PATH ?>icon/facebook.svg" alt=""></a></li>
+                <li><a href="<?php echo $options['instagram_link']; ?>" target="blank"><img src="<?= FE_IMG_PATH ?>icon/instagram.svg" alt=""></a></li>
             </ul>
             </div>
         </div>  
