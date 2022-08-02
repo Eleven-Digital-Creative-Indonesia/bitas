@@ -260,6 +260,10 @@ class Frontend extends AN_Controller
             $data['message']        = "Anda gagal mengirim pesan.";
         }
 
+        echo '<pre>';
+        print_r($data);
+        die();
+
         $this->load->view(VIEW_FRONT . 'template', $data);
     }
 
