@@ -62,7 +62,7 @@ class AN_Email
             );
 
             $mail->SMTPAuth     = true;                 // Enable SMTP authentication (TRUE / FALSE)
-            $mail->SMTPSecure   = "tls"; // tls/ssl
+            $mail->SMTPSecure   = "ssl"; // tls/ssl
             $mail->Host         = $mailserver_host;     // sets GMAIL as the SMTP server
             $mail->Port         = $port;                // gmail smtp port
             $mail->Username     = $username;            // SMTP gmail address
