@@ -47,19 +47,19 @@
                 ?>
                 <form action="<?php echo $form_action; ?>" role="form" method="post" class="form-horizontal" id="form_contact">
                     <div class="form__field">
-                        <input type="text" name="username" id="username" placeholder="Name" class="control" required>
+                        <input type="text" name="username" id="username" placeholder="Nama" class="control" required>
                     </div>
                     <div class="form__field">
                         <input type="email" name="email" id="email" placeholder="Email" class="control" required>
                     </div>
                     <div class="form__field">
-                        <input type="text" name="phone" id="phone" placeholder="Phone Number" class="control">
+                        <input type="text" name="phone" id="phone" placeholder="Nomor Telp" class="control">
                     </div>
                     <div class="form__field">
-                        <input type="text" name="company_name" id="company_name" placeholder="Company Name" class="control">
+                        <input type="text" name="company_name" id="company_name" placeholder="Nama Perusahaan" class="control">
                     </div>
                     <div class="form__field">
-                        <textarea name="message" id="message" cols="30" rows="6" placeholder="Your Message" class="control" required></textarea>                  
+                        <textarea name="message" id="message" cols="30" rows="6" placeholder="Pesan Anda" class="control" required></textarea>                  
                     </div>
                     <div class="button-area">
                         <button type="submit" class="btn btn__primary">Kirim Pesan</button> 
