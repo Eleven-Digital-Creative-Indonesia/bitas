@@ -85,9 +85,11 @@
 
         
         $classHeader = "header--transparent";
+        /*
         if($segment != 'home' && $segment != ''){
           $classHeader = "header--transparent fixed";
         }
+        */
     ?>
     <div class="header <?php echo $classHeader; ?>">
       <div class="container">    
@@ -209,6 +211,24 @@
     <script src="<?= FE_JS_PATH ?>wow.min.js" type="text/javascript"></script>
     <script src="<?= FE_JS_PATH ?>isotope.pkgd.min.js" type="text/javascript"></script>
     <script src="<?= FE_JS_PATH ?>main.js"  type="text/javascript"></script>
+
+    <!--
+    <?php if($segment == 'home' && $segment == '') : ?>
+    <script>
+      //Back To Top
+      $(window).scroll(function(){		
+          if ($(this).scrollTop() >= 10){
+              $('.backtop').fadeIn(300);
+              $('.header').addClass("fixed");
+              console.log('tes');
+          } else{
+              $('.backtop').fadeOut(300);	
+              $('.header').removeClass("fixed");
+          }
+      });
+    </script>
+    <?php endif; ?>
+    -->
 
     <!-- Isotope Filter-->
     <script>    

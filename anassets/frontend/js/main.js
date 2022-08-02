@@ -52,12 +52,13 @@ $(document).ready(function(){
     $(window).scroll(function(){		
         if ($(this).scrollTop() >= 10){
             $('.backtop').fadeIn(300);
-            $('.header').addClass("fixed");
+            //$('.header').addClass("fixed");
         } else{
             $('.backtop').fadeOut(300);	
-            $('.header').removeClass("fixed");
+            //$('.header').removeClass("fixed");
         }
     });
+
     $('.backtop').click(function () {
         $('body,html').animate({
             scrollTop : 0                       
