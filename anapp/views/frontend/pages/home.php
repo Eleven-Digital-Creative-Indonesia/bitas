@@ -23,7 +23,7 @@
                     <?php endif; ?>
                     </div>
                     <div class="button-area">
-                    <a href="<?php echo base_url(); ?>about" class="btn btn__primary wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.8s">Explore Lebih Jauh</a>
+                    <a href="#about" class="btn btn__primary wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.8s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.8s; animation-name: fadeInUp;">Explore Lebih Jauh</a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-sm-6">
