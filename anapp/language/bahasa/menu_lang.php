@@ -23,7 +23,7 @@ $lang['menu_contact_sender']            = 'Terkirim';
 
 $lang['menu_member']                    = 'Pengguna';
 $lang['menu_member_new']                = 'Tambah Pengguna Baru';
-$lang['menu_member_list']               = 'List Pengguna';
+$lang['menu_member_list']               = 'Daftar Pengguna';
 $lang['menu_member_tree']               = 'Jaringan Binary';
 $lang['menu_member_generation']         = 'Jaringan Generasi';
 $lang['menu_member_upgrade']            = 'Upgrade Paket';
@@ -31,8 +31,8 @@ $lang['menu_member_ro']                 = 'RO Produk';
 $lang['menu_member_loan'] 				= 'Stockist Loan';
 
 $lang['menu_board']						= 'Pengguna Board';
-$lang['menu_board_list'] 				= 'List Board';
-$lang['menu_board_member_list'] 		= 'List Pengguna Board';
+$lang['menu_board_list'] 				= 'Daftar Board';
+$lang['menu_board_member_list'] 		= 'Daftar Pengguna Board';
 $lang['menu_board_tree'] 				= 'Pohon Board';
 
 $lang['menu_product']                   = 'Produk';

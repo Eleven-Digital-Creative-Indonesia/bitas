@@ -8,10 +8,10 @@
                 <div class="card-title">
                     <p class="mb-0 mt-3">
                         <i class="fa fa-lock"></i> 
-                        Login | <span class="text-muted"><img src="<?= LOGO_IMG2 ?>" alt="" width="50px"></span>
+                        Halaman Masuk Akun | <span class="text-muted"><img src="<?= LOGO_IMG2 ?>" alt="" width="50px"></span>
                     </p>
                 </div>
-                <p class="login-card-description mb-4">Silahkan ketik username dan password anda.</p>
+                <p class="login-card-description mb-4">Silahkan ketik nama pengguna dan kata sandi anda.</p>
                 <form class="validate-form login-form" method="post" action="<?php echo base_url('auth/validate'); ?>">
                     <div class="alert alert-danger error-validate" role="alert" style="line-height: 20px; text-align: center; display: none;">
                         <i class="mdi mdi-information-outline"></i>
@@ -19,18 +19,18 @@
                     </div>
 
                     <div class="form-group has-icon-left">
-                        <label for="username" class="sr-only">Username</label>
+                        <label for="username" class="sr-only">Nama Pengguna</label>
                         <div class="input-group">
-                            <input type="text" name="username" id="username" class="form-control" placeholder="Username">
+                            <input type="text" name="username" id="username" class="form-control" placeholder="Nama Pengguna">
                             <div class="form-control-icon">
                                 <i class="fa fa-user"></i>
                             </div>
                         </div>
                     </div>
                     <div class="form-group has-icon-left mb-4">
-                        <label for="password" class="sr-only">Password</label>
+                        <label for="password" class="sr-only">Kata Sandi</label>
                         <div class="input-group show-hide-password">
-                            <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+                            <input type="password" name="password" id="password" class="form-control" placeholder="Kata Sandi">
                             <div class="input-group-append" id="button-eye">
                                 <button class="btn btn-default" type="button">
                                     <i class="icon-eye fa fa-eye-slash" aria-hidden="true"></i>
@@ -41,7 +41,7 @@
                             </div>
                         </div>
                     </div>
-                    <input type="submit" name="login" id="login" class="btn btn-block login-btn mb-4" type="button" value="Login">
+                    <input type="submit" name="login" id="login" class="btn btn-block login-btn mb-4" type="button" value="Masuk">
                 </form>
                 <!--
                 <a href="<?php echo base_url('forgetpassword'); ?>" class="text-reset login-card-footer-text d-block mb-0">Lupa Password? Klik disni</a>
