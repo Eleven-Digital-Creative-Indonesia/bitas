@@ -51,8 +51,8 @@ class AN_Email
             $mail               = $this->CI->phpmailer;
 
             $mail->IsSMTP();                // telling the class to use SMTP
-            $mail->SMTPDebug    = true;    // debug email sending (inspect: "Network" in browser)
-
+            $mail->SMTPDebug    = 2;    // debug email sending (inspect: "Network" in browser)
+            $mail->Mailer       = "smtp";
             $mail->SMTPOptions  = array(
                 'ssl' => array(
                     'verify_peer'       => false,
@@ -67,11 +67,13 @@ class AN_Email
             $mail->Port         = $port;                // gmail smtp port
             $mail->Username     = $username;            // SMTP gmail address
             $mail->Password     = $password;            // SMTP account password
+            $mail->Priority     = 1;
 
             $mail->From         = $from;                // sender's address
             $mail->FromName     = $from_name;           // sender's name
 
-            $mail->AddAddress($to);                     // send to receiver's e-mail address
+            $mail->AddAddress($to, "Admin");            // send to receiver's e-mail address
+            $mail->AddReplyTo($from, $from_name);
             $mail->Subject      = ($subject);           // e-mail subject
             $mail->Body         = html_entity_decode($message->html);
             $mail->Encoding     = "base64";
