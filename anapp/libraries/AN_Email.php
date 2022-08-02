@@ -52,7 +52,7 @@ class AN_Email
 
             $mail->IsSMTP();                // telling the class to use SMTP
             $mail->SMTPDebug    = 2;    // debug email sending (inspect: "Network" in browser)
-            $mail->Mailer       = "smtp";
+            //$mail->Mailer       = "smtp";
             $mail->SMTPOptions  = array(
                 'ssl' => array(
                     'verify_peer'       => false,
@@ -71,7 +71,8 @@ class AN_Email
 
             $mail->From         = $from;                // sender's address
             $mail->FromName     = $from_name;           // sender's name
-
+            
+            $mail->SetFrom($from, $from_name);          //set email pengirim
             $mail->AddAddress($to, "Admin");            // send to receiver's e-mail address
             $mail->AddReplyTo($from, $from_name);
             $mail->Subject      = ($subject);           // e-mail subject
@@ -80,7 +81,7 @@ class AN_Email
             $mail->CharSet      = "UTF-8";
             $mail->IsHTML(true);
             $mail->WordWrap     = 50;
-
+        
             if ($mail->Send()) {
                 die('SUCCESS');
                 an_log_notif('email', $subject, $to, $message->plain, 'SUCCESS');
