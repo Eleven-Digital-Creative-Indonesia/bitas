@@ -85,11 +85,9 @@
 
         
         $classHeader = "header--transparent";
-        /*
         if($segment != 'home' && $segment != ''){
           $classHeader = "header--transparent fixed";
         }
-        */
     ?>
     <div class="header <?php echo $classHeader; ?>">
       <div class="container">    
