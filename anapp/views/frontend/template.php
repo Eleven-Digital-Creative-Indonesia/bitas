@@ -79,7 +79,17 @@
 
 <body>
     <!--Header-->
-    <div class="header header--transparent">
+    <?php 
+        $segment    = $this->uri->segment('1');
+        $home_list  = $this->Model_Home->get_home_detail();
+
+        
+        $classHeader = "header--transparent";
+        if($segment != 'home' && $segment != ''){
+          $classHeader = "header--transparent fixed";
+        }
+    ?>
+    <div class="header <?php echo $classHeader; ?>">
       <div class="container">    
         <nav>
             <div class="logo">
