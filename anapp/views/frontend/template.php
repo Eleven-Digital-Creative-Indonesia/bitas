@@ -137,8 +137,8 @@
                   <div class="item__desc">          
                       <ul>
                         <li><?php echo $options['company_address']; ?></li> 
-                        <li><?php echo $options['company_phone']; ?></li>   
-                        <li><?php echo $options['company_email']; ?></li>                  
+                        <li><a href="tel:<?php echo $options['company_phone']; ?>"><?php echo $options['company_phone']; ?></a></li>   
+                        <li><a href="mailto:<?php echo $options['company_email']; ?>"><?php echo $options['company_email']; ?></a></li>                  
                       </ul>   
                   </div>
                 </div>
