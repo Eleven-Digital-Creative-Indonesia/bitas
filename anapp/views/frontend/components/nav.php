@@ -21,6 +21,6 @@
             <?php endif; ?>
         <?php endif; ?>
         
-        <li class="navigation__cta"><a href="<?php echo $options['company_email']; ?>" class="btn btn__primary" target="_blank">Lihat Penawaran</a></li>
+        <li class="navigation__cta"><a href="mailto:<?php echo $options['company_email']; ?>" class="btn btn__primary" target="_blank">Lihat Penawaran</a></li>
     </ul>
 </div>
