@@ -230,9 +230,9 @@ $config['email_active']             = TRUE;
 //$config['mailserver_host']          = 'mail.elevendigital.id';
 $config['mailserver_host']          = 'srv104.niagahoster.com'; 
 $config['mailserver_port']          = 465;
-$config['mailserver_username']      = 'niagahosterpercobaan@elevendigital.id';
-$config['mailserver_password']      = 'OSyVqHnUAjT]';
-$config['mail_sender_admin']        = '';
+$config['mailserver_username']      = 'admin@elevendigital.id';
+$config['mailserver_password']      = 'P@sselevendigital.id';
+$config['mail_sender_admin']        = 'admin@elevendigital.id';
 
 /**
  * Staff Access Desc

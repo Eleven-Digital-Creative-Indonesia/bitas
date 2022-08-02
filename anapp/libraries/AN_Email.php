@@ -39,19 +39,19 @@ class AN_Email
         $port               = config_item('mailserver_port');
         $username           = config_item('mailserver_username');
         $password           = config_item('mailserver_password');
+        $mail_sender        = config_item('mail_sender_admin');
 
         require_once(APPPATH . 'libraries/vendor/phpmailer/src/PHPMailer.php');
         require_once(APPPATH . 'libraries/vendor/phpmailer/src/SMTP.php');
         require_once(APPPATH . 'libraries/vendor/phpmailer/src/Exception.php');
 
         try {
-
             $this->CI->phpmailer = new PHPMailer\PHPMailer\PHPMailer();
 
             $mail               = $this->CI->phpmailer;
 
             $mail->IsSMTP();                // telling the class to use SMTP
-            $mail->SMTPDebug    = 2;    // debug email sending (inspect: "Network" in browser)
+            $mail->SMTPDebug    = false;    // debug email sending (inspect: "Network" in browser)
             //$mail->Mailer       = "smtp";
             $mail->SMTPOptions  = array(
                 'ssl' => array(
@@ -72,7 +72,7 @@ class AN_Email
             $mail->From         = $from;                // sender's address
             $mail->FromName     = $from_name;           // sender's name
             
-            $mail->SetFrom($from, $from_name);          //set email pengirim
+            $mail->SetFrom($mail_sender, 'Admin Support');          //set email pengirim
             $mail->AddAddress($to, "Admin");            // send to receiver's e-mail address
             $mail->AddReplyTo($from, $from_name);
             $mail->Subject      = ($subject);           // e-mail subject
@@ -83,11 +83,9 @@ class AN_Email
             $mail->WordWrap     = 50;
         
             if ($mail->Send()) {
-                die('SUCCESS');
                 an_log_notif('email', $subject, $to, $message->plain, 'SUCCESS');
                 return true;
             } else {
-                die('FAILED TES');
                 an_log_notif('email', $subject, $to, $message->plain, 'FAILED');
                 return false;
             }
