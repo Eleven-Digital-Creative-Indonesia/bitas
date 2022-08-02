@@ -254,9 +254,9 @@ class Frontend extends AN_Controller
         $isSuccess = $this->an_email->send_email_contact($data);
         if($isSuccess)
         {
-            $data['alert']        = "Pesan anda berhasil di kirim.";
+            $data['alert']        = array('status' => 'success', 'message' => "Pesan anda berhasil di kirim. Terima Kasih.");
         }else{
-            $data['alert']        = "Anda gagal mengirim pesan.";
+            $data['alert']        = array('status' => 'failed', 'message' => "Anda gagal mengirim pesan. Silahkan coba kembali.");
         }
 
         $this->load->view(VIEW_FRONT . 'template', $data);
