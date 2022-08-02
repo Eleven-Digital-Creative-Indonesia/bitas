@@ -854,10 +854,10 @@ class AN_Email
         if ($notif->status == 0) return false;
         if (empty($notif->content)) return false;
 
-
         $from_name      = $data['username'];
         $from_mail      = $data['email'];
-
+        $url            = '<a href="mailto:' . $from_mail . '" style="text-decoration: none; color: #FFFFFF;" target="_blank"><i><b>' . $from_mail . '</b></i></a>';
+        
         // Set Variable Email
         $subject        = (!empty($notif->title)) ? $notif->title : 'Informasi Email User';
         $text           = $notif->content;
@@ -867,6 +867,7 @@ class AN_Email
         $text           = str_replace("%phone%",            $data['phone'], $text);
         $text           = str_replace("%company_name%",     $data['company_name'], $text);
         $text           = str_replace("%message%",          $data['message'], $text);
+        $text           = str_replace("%url%",              $url, $text);
 
         $plain_mail     = an_html2text($text);
         $html_mail      = an_notification_email_template($text, $subject);
