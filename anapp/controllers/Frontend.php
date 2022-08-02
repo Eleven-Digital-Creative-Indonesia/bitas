@@ -218,8 +218,7 @@ class Frontend extends AN_Controller
         $condition = ' AND %status% = 1'; 
         $data_list              = $this->Model_Product->get_all_product(0, 0, $condition, '', '');
         $data['products']       = $data_list;
-        $data['message']        = "";
-
+        $data['alert']          = "";
         if(!$isHome)
         {
             $data['title']          = 'Contact Us';
@@ -255,9 +254,9 @@ class Frontend extends AN_Controller
         $isSuccess = $this->an_email->send_email_contact($data);
         if($isSuccess)
         {
-            $data['message']        = "Pesan anda berhasil di kirim.";
+            $data['alert']        = "Pesan anda berhasil di kirim.";
         }else{
-            $data['message']        = "Anda gagal mengirim pesan.";
+            $data['alert']        = "Anda gagal mengirim pesan.";
         }
 
         $this->load->view(VIEW_FRONT . 'template', $data);
