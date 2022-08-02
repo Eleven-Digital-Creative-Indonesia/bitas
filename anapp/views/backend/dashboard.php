@@ -77,103 +77,93 @@ if ($is_admin) {
             <?php if ( $is_admin ) { ?>
                 <div class="row">
                     <?php if ( $dashboard_admin ) { ?>
-                        <div class="col-xl-6 col-md-6 col-xs-12">
+                        <div class="col-xl-3 col-md-3">
                             <div class="card card-stats">
                                 <!-- Card body -->
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col pr-0">
-                                            <h5 class="card-title text-uppercase text-muted mb-0"><?php echo lang('reseller_total'); ?></h5>
-                                            <span class="h5 font-weight-bold mb-0"><?php echo an_accounting($this->Model_Member->count_data('active',TYPE_STATUS_RESELLER)); ?></span>
+                                            <h5 class="card-title text-uppercase text-muted mb-0"><?php echo lang('menu_home_list'); ?></h5>
                                         </div>
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
-                                                <i class="ni ni-circle-08"></i>
+                                                <i class="ni ni-folder-17"></i>
                                             </div>
                                         </div>
                                     </div>
                                     <p class="mt-3 mb-0 text-sm">
-                                        <a href="<?php echo base_url('member/lists'); ?>" class="text-nowrap text-default"><?php echo lang('see_more'); ?></a>
+                                        <a href="<?php echo base_url('home/new'); ?>" class="text-nowrap text-default"><?php echo lang('see_more'); ?></a>
                                     </p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-6 col-md-6 col-xs-12">
+                        <div class="col-xl-3 col-md-3">
                             <div class="card card-stats">
                                 <!-- Card body -->
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col pr-0">
-                                            <h5 class="card-title text-uppercase text-muted mb-0"><?php echo lang('dropshipper_total'); ?></h5>
-                                            <span class="h5 font-weight-bold mb-0"><?php echo an_accounting($this->Model_Member->count_data('active',TYPE_STATUS_DROPSHIPPER)); ?></span>
+                                            <h5 class="card-title text-uppercase text-muted mb-0"><?php echo lang('menu_home_client'); ?></h5>
                                         </div>
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
-                                                <i class="ni ni-circle-08"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <p class="mt-3 mb-0 text-sm">
-                                        <a href="<?php echo base_url('member/lists'); ?>" class="text-nowrap text-default"><?php echo lang('see_more'); ?></a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-xl-4 col-md-4">
-                            <div class="card card-stats">
-                                <!-- Card body -->
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col pr-0">
-                                            <h5 class="card-title text-uppercase text-muted mb-0"><?php echo lang('omzet_total'); ?></h5>
-                                            <span class="h5 font-weight-bold mb-0"><?php echo isset($total_omzet) ? an_accounting($total_omzet) : 0; ?></span>
-                                        </div>
-                                        <div class="col-auto">
-                                            <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
-                                                <i class="ni ni-chart-bar-32"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <p class="mt-3 mb-0 text-sm">
-                                        <a href="<?php echo base_url('report/omzet'); ?>" class="text-nowrap text-default"><?php echo lang('see_more'); ?></a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-md-4">
-                            <div class="card card-stats">
-                                <!-- Card body -->
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col pr-0">
-                                            <h5 class="card-title text-uppercase text-muted mb-0"><?php echo lang('bonus_total'); ?></h5>
-                                            <span class="h5 font-weight-bold mb-0"><?php echo an_accounting($total_bonus); ?><br></span>
-                                            <span class="h6 font-weight-bold text-info mb-0"><?php echo an_number($percentage); ?> %</span>
-                                        </div>
-                                        <div class="col-auto">
-                                            <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
                                                 <i class="ni ni-money-coins"></i>
                                             </div>
                                         </div>
                                     </div>
                                     <p class="mt-2 mb-0 text-sm">
-                                        <a href="<?php echo base_url('commission/bonus'); ?>" class="text-nowrap text-default"><?php echo lang('see_more'); ?></a>
+                                        <a href="<?php echo base_url('home/clientlist'); ?>" class="text-nowrap text-default"><?php echo lang('see_more'); ?></a>
                                     </p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-4 col-md-4">
+                        <div class="col-xl-3 col-md-3">
                             <div class="card card-stats">
                                 <!-- Card body -->
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col pr-0">
-                                            <h5 class="card-title text-uppercase text-muted mb-0"><?php echo lang('order_total'); ?></h5>
-                                            <span class="h5 font-weight-bold mb-0">
-                                                <?php echo an_accounting($dataOrder->total_trx); ?> 
-                                                <small class="text-muted ml-2">PENDING</small>
-                                            </span>
+                                            <h5 class="card-title text-uppercase text-muted mb-0"><?php echo lang('menu_about_new'); ?></h5>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
+                                                <i class="ni ni-badge"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="mt-3 mb-0 text-sm">
+                                        <a href="<?php echo base_url('about/new'); ?>" class="text-nowrap text-default"><?php echo lang('see_more'); ?></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-3">
+                            <div class="card card-stats">
+                                <!-- Card body -->
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col pr-0">
+                                            <h5 class="card-title text-uppercase text-muted mb-0"><?php echo lang('menu_about_detail_list'); ?></h5>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
+                                                <i class="ni ni-building"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="mt-3 mb-0 text-sm">
+                                        <a href="<?php echo base_url('about/historylists'); ?>" class="text-nowrap text-default"><?php echo lang('see_more'); ?></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-3">
+                            <div class="card card-stats">
+                                <!-- Card body -->
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col pr-0">
+                                            <h5 class="card-title text-uppercase text-muted mb-0"><?php echo lang('menu_product_list'); ?></h5>
                                         </div>
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
@@ -182,7 +172,67 @@ if ($is_admin) {
                                         </div>
                                     </div>
                                     <p class="mt-3 mb-0 text-sm">
-                                        <a href="<?php echo base_url('report/sales'); ?>" class="text-nowrap text-default"><?php echo lang('see_more'); ?></a>
+                                        <a href="<?php echo base_url('productmanage/productlist'); ?>" class="text-nowrap text-default"><?php echo lang('see_more'); ?></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-3">
+                            <div class="card card-stats">
+                                <!-- Card body -->
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col pr-0">
+                                            <h5 class="card-title text-uppercase text-muted mb-0"><?php echo lang('menu_product_category'); ?></h5>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
+                                                <i class="ni ni-bag-17"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="mt-3 mb-0 text-sm">
+                                        <a href="<?php echo base_url('productmanage/categorylist'); ?>" class="text-nowrap text-default"><?php echo lang('see_more'); ?></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-3">
+                            <div class="card card-stats">
+                                <!-- Card body -->
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col pr-0">
+                                            <h5 class="card-title text-uppercase text-muted mb-0"><?php echo lang('menu_services_new'); ?></h5>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
+                                                <i class="ni ni-chat-round"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="mt-3 mb-0 text-sm">
+                                        <a href="<?php echo base_url('services/serviceslists'); ?>" class="text-nowrap text-default"><?php echo lang('see_more'); ?></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-3">
+                            <div class="card card-stats">
+                                <!-- Card body -->
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col pr-0">
+                                            <h5 class="card-title text-uppercase text-muted mb-0"><?php echo lang('menu_member_list'); ?></h5>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
+                                                <i class="ni ni-circle-08"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="mt-3 mb-0 text-sm">
+                                        <a href="<?php echo base_url('member/lists'); ?>" class="text-nowrap text-default"><?php echo lang('see_more'); ?></a>
                                     </p>
                                 </div>
                             </div>
