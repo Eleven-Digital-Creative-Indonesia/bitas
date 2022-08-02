@@ -489,8 +489,7 @@ if ($is_admin) {
 <?php elseif (!$is_admin) : ?>
     <div class="container-fluid mt--6">
         <div class="row">
-            <div class="col-lg-8">
-
+            <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
                         <div class="row align-items-center">
@@ -583,6 +582,7 @@ if ($is_admin) {
                     </div>
                 </div>
             </div>
+            <!--
             <div class="col-lg-4">
                 <div class="row">
                     <div class="col-sm-6 col-md-12">
@@ -604,7 +604,6 @@ if ($is_admin) {
                                 $bank_name = $getBank->nama;
                             }
                             ?>
-                            <!-- Card body -->
                             <div class="card-body pb-3">
                                 <div class="row justify-content-between align-items-center">
                                     <div class="col">
@@ -641,6 +640,7 @@ if ($is_admin) {
                     </div>
                 </div>
             </div>
+            -->
         </div>
     </div>
 <?php endif; ?>
