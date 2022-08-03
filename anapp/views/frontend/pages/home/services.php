@@ -58,19 +58,18 @@
         </div>
         <div class="client-list">
         <?php if(!empty($clientlist)) : ?>
+            <ul>
             <?php
                 $second = 0.6; 
                 foreach($clientlist AS $row) : ?>
-                <ul>
                     <li class="item wow fadeInUp" data-wow-duration="1s" data-wow-delay="<?php echo $second; ?>s">
                         <img src="<?php echo CLIENT_IMG_PATH.$row->image; ?>" alt="">
                     </li>
-                    
-                </ul>
                 <?php 
                     $second += 0.3;
                 endforeach; 
-            ?>
+            ?>    
+            </ul>
         <?php endif; ?>
         </div>
     </div>
