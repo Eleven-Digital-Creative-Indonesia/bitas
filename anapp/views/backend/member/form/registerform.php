@@ -184,7 +184,7 @@
     </div>
 </div> 
 
-<!-- No. Telp -->
+<!--
 <div class="form-group row mb-2">
     <label class="col-md-3 col-form-label form-control-label"><?php echo lang('reg_no_telp'); ?> (Home) </label>
     <div class="col-md-9">
@@ -197,7 +197,6 @@
     </div>
 </div>  
 
-<!-- No. Telp -->
 <div class="form-group row mb-2">
     <label class="col-md-3 col-form-label form-control-label"><?php echo lang('reg_no_telp'); ?> (Office) </label>
     <div class="col-md-9">
@@ -209,8 +208,7 @@
         </div>
     </div>
 </div>  
-
-<!-- Place of Birth -->
+-->
 <?php $pob = false; ?>
 <?php if ( $pob ) { ?>
 <div class="form-group row mb-2">
@@ -321,7 +319,7 @@
 </div>  
 <?php } ?>
 
-<!-- Personal Document -->
+<!-- 
 <div class="form-group row mb-2">
     <label class="col-md-3 col-form-label form-control-label"><?php echo lang('reg_personal_doc'); ?> <span class="required">*</span></label>
     <div class="col-md-9">
@@ -338,7 +336,6 @@
     </div>
 </div>  
 
-<!-- ID Card -->
 <div class="form-group row mb-2">
     <label class="col-md-3 col-form-label form-control-label"><?php echo lang('reg_no_ktp'); ?> <span class="required">*</span></label>
     <div class="col-md-9">
@@ -351,7 +348,6 @@
     </div>
 </div>  
 
-<!-- NPWP -->
 <div class="form-group row mb-2">
     <label class="col-md-3 col-form-label form-control-label">NPWP </label>
     <div class="col-md-9">
@@ -363,6 +359,7 @@
         </div>
     </div>
 </div>
+-->
 
 <hr class="mt-3">
 
@@ -430,7 +427,7 @@
 
 <!-- Kode POS -->
 <div class="form-group row mb-2">
-    <label class="col-md-3 col-form-label form-control-label"><?php echo lang('reg_postcode'); ?> <span class="required">*</span></label>
+    <label class="col-md-3 col-form-label form-control-label"><?php echo lang('reg_postcode'); ?> </label>
     <div class="col-md-9">
         <div class="input-group input-group-merge">
             <div class="input-group-prepend">

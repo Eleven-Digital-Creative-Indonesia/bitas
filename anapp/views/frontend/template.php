@@ -89,7 +89,7 @@
           $classHeader = "header--transparent fixed";
         }
     ?>
-    <div class="header <?php echo $classHeader; ?>">
+    <div class="header header--transparent">
       <div class="container">    
         <nav>
             <div class="logo">

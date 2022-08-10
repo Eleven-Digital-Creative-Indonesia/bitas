@@ -181,6 +181,7 @@ var RegisterMember = function() {
                         }
                     }
                 },
+                /*
                 reg_member_idcard: {
                     minlength: 16,
                     required: true,
@@ -204,7 +205,6 @@ var RegisterMember = function() {
                         }
                     }
                 },
-                /*
                 reg_member_bill: {
                     required: true,
                     remote: {
@@ -246,6 +246,7 @@ var RegisterMember = function() {
                 // reg_member_marital: {
                 //     required: true,
                 // },
+                /*
                 reg_member_idcard_type: {
                     required: true,
                 },
@@ -267,7 +268,6 @@ var RegisterMember = function() {
                 reg_member_postcode: {
                     required: true,
                 },
-                /*
                 reg_member_bank: {
                     required: true,
                 },
@@ -302,12 +302,14 @@ var RegisterMember = function() {
                 reg_member_phone: {
                     remote: "No. Telp/HP sudah digunakan. Silahkan gunakan No. Telp/HP lain",
                 },
+                /*
                 reg_member_idcard: {
                     remote: "No. No. KTP/KITAS sudah terdaftar. Silahkan gunakan No. KTP/KITAS lain",
                 },
                 reg_member_bill: {
                     remote: "No. Rekening sudah terdaftar. Silahkan gunakan No. Rekening lain",
                 },
+                */
             },
             errorPlacement: function (error, element) { // render error placement for each input type
                 if (element.parent(".input-group").length) {
