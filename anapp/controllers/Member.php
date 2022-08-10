@@ -2554,11 +2554,11 @@ class Member extends AN_Controller
         //$this->form_validation->set_rules('reg_member_idcard_type', 'Jenis Identitas', 'required');
         //$this->form_validation->set_rules('reg_member_idcard', 'No. KTP/KITAS', 'required');
 
-        $this->form_validation->set_rules('reg_member_province', 'Provinsi', 'required');
-        $this->form_validation->set_rules('reg_member_district', 'Kota/Kabupaten', 'required');
-        $this->form_validation->set_rules('reg_member_subdistrict', 'Kecamatan', 'required');
-        $this->form_validation->set_rules('reg_member_village', 'Desa/Kelurahan', 'required');
-        $this->form_validation->set_rules('reg_member_address', 'Alamat', 'required');
+        //$this->form_validation->set_rules('reg_member_province', 'Provinsi', 'required');
+        //$this->form_validation->set_rules('reg_member_district', 'Kota/Kabupaten', 'required');
+        //$this->form_validation->set_rules('reg_member_subdistrict', 'Kecamatan', 'required');
+        //$this->form_validation->set_rules('reg_member_village', 'Desa/Kelurahan', 'required');
+        //$this->form_validation->set_rules('reg_member_address', 'Alamat', 'required');
         //$this->form_validation->set_rules('reg_member_postcode', 'Kode POS', 'required');
 
         $this->form_validation->set_rules('reg_member_email', 'Email', 'required');

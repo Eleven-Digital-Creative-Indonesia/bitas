@@ -363,10 +363,10 @@
 
 <hr class="mt-3">
 
+<!--
 <h3><?php echo lang('reg_address_information'); ?></h3>
 <hr class="mt-2 mb-3">
 
-<!-- Province -->
 <div class="form-group row mb-2">
     <label class="col-md-3 col-form-label form-control-label"><?php echo lang('reg_provinsi'); ?> <span class="required">*</span></label>
     <div class="col-md-9">
@@ -384,7 +384,6 @@
     </div>
 </div>   
 
-<!-- City -->
 <div class="form-group row mb-2">
     <label class="col-md-3 col-form-label form-control-label"><?php echo lang('reg_kota'); ?> <span class="required">*</span></label>
     <div class="col-md-9">
@@ -394,7 +393,6 @@
     </div>
 </div>  
 
-<!-- District -->
 <div class="form-group row mb-2">
     <label class="col-md-3 col-form-label form-control-label"><?php echo lang('reg_kecamatan'); ?> <span class="required">*</span></label>
     <div class="col-md-9">
@@ -404,7 +402,6 @@
     </div>
 </div>  
 
-<!-- Village -->
 <div class="form-group row mb-2">
     <label class="col-md-3 col-form-label form-control-label"><?php echo lang('reg_desa'); ?> <span class="required">*</span></label>
     <div class="col-md-9">
@@ -412,7 +409,6 @@
     </div>
 </div> 
 
-<!-- Alamat -->
 <div class="form-group row mb-2">
     <label class="col-md-3 col-form-label form-control-label"><?php echo lang('reg_alamat'); ?> <span class="required">*</span></label>
     <div class="col-md-9">
@@ -424,8 +420,6 @@
         </div>
     </div>
 </div>
-
-<!-- Kode POS -->
 <div class="form-group row mb-2">
     <label class="col-md-3 col-form-label form-control-label"><?php echo lang('reg_postcode'); ?> </label>
     <div class="col-md-9">
@@ -439,6 +433,7 @@
 </div>
 
 <hr class="mt-3">
+-->
 
 <!--
 <h3><?php echo lang('reg_bank_information'); ?></h3>
