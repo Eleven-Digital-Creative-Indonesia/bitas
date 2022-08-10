@@ -30,14 +30,16 @@
                                 <?php $this->load->view(VIEW_BACK . 'setting/formgeneral/company'); ?>
                             </div>
                         </div>
+                        <!--
                         <div class="card mb-2">
                             <div class="card-header py-3 bg-gradient-info" id="headCompanyBilling" data-toggle="collapse" data-target="#companyBilling" aria-expanded="false" aria-controls="companyBilling">
                                 <h5 class="text-white mb-0">Informasi Bank Perusahaan</h5>
                             </div>
                             <div id="companyBilling" class="collapse" aria-labelledby="headCompanyBilling" data-parent="#accordionGeneralSetting">
-                                <?php $this->load->view(VIEW_BACK . 'setting/formgeneral/companybilling'); ?>
+                                <?php //$this->load->view(VIEW_BACK . 'setting/formgeneral/companybilling'); ?>
                             </div>
                         </div>
+                        -->
                         <!--
                         <div class="card mb-2">
                             <div class="card-header py-3 bg-gradient-info" id="headStockistOrder" data-toggle="collapse" data-target="#stockistOrder" aria-expanded="false" aria-controls="stockistOrder">
