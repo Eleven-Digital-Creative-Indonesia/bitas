@@ -49,6 +49,7 @@ $(document).ready(function(){
     new WOW().init();
 
     //Back To Top
+    /*
     $(window).scroll(function(){		
         if ($(this).scrollTop() >= 10){
             $('.backtop').fadeIn(300);
@@ -58,6 +59,7 @@ $(document).ready(function(){
             //$('.header').removeClass("fixed");
         }
     });
+    */
 
     $('.backtop').click(function () {
         $('body,html').animate({

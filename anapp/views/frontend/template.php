@@ -210,9 +210,9 @@
     <script src="<?= FE_JS_PATH ?>isotope.pkgd.min.js" type="text/javascript"></script>
     <script src="<?= FE_JS_PATH ?>main.js"  type="text/javascript"></script>
 
-    <!--
-    <?php if($segment == 'home' && $segment == '') : ?>
-    <script>
+    <?php if($segment == 'home' || $segment == '') : ?>
+    <script type="text/javascript">
+      console.log('tes');
       //Back To Top
       $(window).scroll(function(){		
           if ($(this).scrollTop() >= 10){
@@ -225,8 +225,20 @@
           }
       });
     </script>
+    <?php else : ?>
+    <script type="text/javascript">
+        //Back To Top
+        $('.header').addClass("fixed");
+        $(window).scroll(function(){		
+          if ($(this).scrollTop() >= 10){
+              $('.backtop').fadeIn(300);
+              console.log('tes');
+          } else{
+              $('.backtop').fadeOut(300);	
+          }	
+        });
+    </script>
     <?php endif; ?>
-    -->
 
     <!-- Isotope Filter-->
     <script>    
