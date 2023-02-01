@@ -845,6 +845,7 @@ class Productmanage extends Admin_Controller {
             $data = array('status' => 'error', 'message' => 'Data Kategori Produk tidak berhasil disimpan. '.validation_errors() );
             die(json_encode($data));
         }else{
+            $catagoryName       = $category;
             $category           = strtolower($category);
             $slug               = url_title($category, 'dash', TRUE);
             $check_slug         = true;
@@ -864,9 +865,9 @@ class Productmanage extends Admin_Controller {
             if ( $staff = an_get_current_staff() ) {
                 $created_by     = $staff->username;
             }
-
+            
             $data = array(
-                'name'          => ucwords($category),
+                'name'          => $catagoryName,
                 'slug'          => $slug,
                 'datecreated'   => $datetime,
                 'datemodified'  => $datetime,
